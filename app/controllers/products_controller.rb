@@ -23,11 +23,18 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    #
+    @product = Product.find(params[:id])
   end
 
   def update
-    #
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:success] = 'Product Successfully Added'
+      redirect_to @product
+    else
+      flash[:warning] = @product.errors.full_messages.join(', ')
+      render :edit
+    end
   end
 
   def destroy
