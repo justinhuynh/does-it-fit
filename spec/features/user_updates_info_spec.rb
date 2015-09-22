@@ -34,15 +34,5 @@ feature 'user updates info', %{
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_button 'Log in'
-    expect(page).to have_content('Signed in successfully.')
-    expect(page).to have_content('Sign Out')
-    click_link 'Edit Your User Profile'
-    fill_in 'Email', with: 'johnyahoo.com'
-    fill_in 'Password', with: 'Password2'
-    fill_in 'Password confirmation', with: 'Password2'
-    fill_in 'Current password', with: user.password
-    click_button 'Update'
-    expect(page).to have_content('Email is invalid')
   end
 end
