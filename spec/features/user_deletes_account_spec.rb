@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 feature 'deletes account', %{
   As an authenticated user
   I want to delete my account
