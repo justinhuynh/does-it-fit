@@ -16,13 +16,18 @@ feature 'user views products on products page', %{
     expect(page).to have_content(product.title)
   end
 
-  # scenario 'provide invalid registration information' do
-  #   visit new_user_registration_path
-  #
-  #   click_button 'Sign up'
-  #   expect(page).to have_content("can't be blank")
-  #   expect(page).to_not have_content('Sign Out')
-  # end
+  scenario 'views product details' do
+    brand = create_brand
+    category = create_category
+    sign_in
+    product = FactoryGirl.create(:product, brand_id: brand.id, category_id: category.id)
+    visit '/products'
+    click_link product.title
+    expect(page).to have_content(product.title)
+    expect(page).to have_content(product.brand.name)
+    expect(page).to have_content(product.category.name)
+    expect(page).to have_content(product.description)
+  end
 end
 
 
@@ -44,4 +49,12 @@ def sign_in
   fill_in 'Email', with: user.email
   fill_in 'Password', with: user.password
   click_button 'Log in'
+end
+
+def create_brand
+  Brand.create!(name: "Hugo")
+end
+
+def create_category
+  Category.create!(name: "Pants")
 end
