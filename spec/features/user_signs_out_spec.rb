@@ -7,7 +7,8 @@ feature 'user signs out', %Q{
 
   Acceptance Criteria
   - [√] If I'm signed in, I have an option to sign out
-  - [√] When I opt to sign out, I get a confirmation that my identity has been forgotten on the machine I'm using
+  - [√] When I opt to sign out, I get a confirmation
+        that my identity has been forgotten on the machine I'm using
 } do
 
   scenario 'authenticated user signs out' do
