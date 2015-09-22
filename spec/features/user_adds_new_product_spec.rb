@@ -14,12 +14,14 @@ feature 'user adds new product', %{
 
   scenario 'user successfully adds product' do
     sign_in
+    category = Category.create(name: "Pants")
+    brand = Brand.create(name: 'Levis')
     visit '/products'
     click_link 'Add New Product'
     product = FactoryGirl.create(:product)
     fill_in 'Title', with: product.title
-    fill_in 'Brand', with: product.brand_id
-    fill_in 'Category', with: product.category_id
+    select brand.name, from: 'Brand'
+    select category.name, from: 'Category'
     fill_in 'Description', with: product.description
     click_button 'Add Product'
     expect(page).to have_content('Product Successfully Added')
@@ -27,16 +29,17 @@ feature 'user adds new product', %{
 
   scenario 'user unsuccessfully adds a product' do
     sign_in
+    category = Category.create(name: "Pants")
+    brand = Brand.create(name: 'Levis')
     visit '/products'
     click_link 'Add New Product'
     product = FactoryGirl.create(:product)
-    fill_in 'Title', with: product.title
-    fill_in 'Brand', with: 'hi'
-    fill_in 'Category', with: 'how are you'
+    select brand.name, from: 'Brand'
+    select category.name, from: 'Category'
     fill_in 'Description', with: product.description
     click_button 'Add Product'
-    expect(page).to have_content('Brand is not a number')
-    expect(page).to have_content('Category is not a number')
+    expect(page).to have_content('Add a new product!')
+    expect(page).to have_content('Title can\'t be blank')
   end
 
 end

@@ -1,7 +1,6 @@
 class Product < ActiveRecord::Base
-belongs_to :brand
-belongs_to :category
-
+  belongs_to :brand
+  belongs_to :category
   validates :title, presence: true
   validates :brand_id, presence: true
   validates :brand_id, numericality: { integer_only: true }
