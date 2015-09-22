@@ -15,5 +15,6 @@ feature 'user views brands', %{
     brand2 = Brand.create(name: 'Carhart')
     visit '/brands'
     expect(page).to have_content(brand.name)
+    expect(page).to have_content(brand2.name)
   end
 end
