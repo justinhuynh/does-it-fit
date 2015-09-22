@@ -1,9 +1,11 @@
 require 'rails_helper'
 
+
 feature 'deletes account', %{
   As an authenticated user
   I want to delete my account
   So that my information is no longer retained by the app
+
 
   Acceptance Criteria:
   - [X] I must be signed in.
