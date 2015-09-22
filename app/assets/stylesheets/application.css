@@ -17,11 +17,49 @@
  */
 
  img {
-    padding: 10px;
+    padding: 0px;
  }
 
  .top-desc {
    border: 2px solid #666;
    padding: 10px;
+   margin: 10px;
    background-color: #ccc;
+   text-align: center;
  }
+
+.inline-list {
+  display: table;
+  margin: 2 auto;
+
+}
+
+
+body    {  background:#e7e7e7;}
+
+
+#box    {
+           box-shadow:inset 1px 1px 40px 0 rgba(0,0,0,.45);
+          border-bottom:0px solid #fff;
+          border-right:0px solid #fff;
+          margin:0 auto 0 auto;
+          background:url(https://i.s-jcrew.com/is/image/jcrew/16252_BL8797_m?$pdp_fs418$);
+  background-size:cover;
+border-radius:5px;
+overflow:hidden;}
+
+#overlay    {  background:rgba(0,0,0,.75);
+               text-align:center;
+               padding: 200px;
+               opacity:0;
+               -webkit-transition: opacity .25s ease;
+-moz-transition: opacity .25s ease;}
+
+#box:hover #overlay {
+               opacity:1;
+               text: "Hello"}
+
+#plus       {  font-family:Helvetica;
+               font-weight:900;
+               color:rgba(255,255,255,.85);
+               font-size:96px;}
