@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user sees categories', %Q{
+feature 'user sees categories', %{
   As an unauthenticated user
   I want to see categories
   So that I can further look into their products
@@ -10,7 +10,7 @@ feature 'user sees categories', %Q{
 
 } do
   scenario 'user sees categories' do
-    category = Category.create!(name: 'Rice paddy')
+    Category.create!(name: 'Rice paddy')
 
     visit '/categories'
 
