@@ -18,7 +18,7 @@ feature 'user updates a product', %{
     category = Category.create(name: "Pants")
     brand = Brand.create(name: 'Levis')
     product = FactoryGirl.create(:product, category_id: category.id, \
-    brand_id: brand.id)
+      brand_id: brand.id)
     visit '/products'
     click_link product.title
     click_link 'Edit Product Info'
@@ -34,7 +34,8 @@ feature 'user updates a product', %{
     sign_in
     category = Category.create(name: "Pants")
     brand = Brand.create(name: 'Levis')
-    product = FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id)
+    product = FactoryGirl.create(:product, category_id: category.id, \
+      brand_id: brand.id)
     visit '/products'
     click_link product.title
     click_link 'Edit Product Info'
