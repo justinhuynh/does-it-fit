@@ -13,3 +13,6 @@ Brand Name: <%= @product.brand.name %>
 <p>
   <%= link_to 'Edit Product Info', edit_product_path(@product.id) %>
 </p>
+<p>
+  <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
+</p>
