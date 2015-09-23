@@ -42,7 +42,6 @@ class ProductsController < ApplicationController
       Product.find(params[:id]).destroy
       flash[:success] = 'Product Deleted'
       redirect_to products_path
-      return
     else
       flash[:warning] = 'You must be signed in.'
       redirect_to products_path
