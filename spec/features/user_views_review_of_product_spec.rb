@@ -17,7 +17,7 @@ feature 'user views reviews of a product', %{
     FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id)
   end
   let!(:review) do
-    FactoryGirl.create(:review, user_id: user.id, product_id: product.id)}
+    FactoryGirl.create(:review, user_id: user.id, product_id: product.id)
   end
 
   scenario 'see reviews of a product' do
