@@ -8,7 +8,6 @@ feature 'user views products on products page', %{
   Acceptance Criteria:
   - [√] I must see a list of products
 } do
-  
   let!(:product) { FactoryGirl.create(:product) }
   scenario 'views list of products' do
     visit products_path
