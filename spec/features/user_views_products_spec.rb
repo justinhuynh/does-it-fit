@@ -12,7 +12,8 @@ feature 'user views products on products page', %{
   let(:category) { Category.create(name: "Pants") }
   let(:product) { FactoryGirl.create(
     :product, category_id: category.id, brand_id: brand.id
-  ) }
+    )
+  }
   before :each do
     brand
     category
