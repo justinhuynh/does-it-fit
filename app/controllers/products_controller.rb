@@ -38,9 +38,14 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    Product.find(params[:id]).destroy
-    flash[:success] = 'Product Deleted'
-    redirect_to products_path
+    if current_user
+      Product.find(params[:id]).destroy
+      flash[:success] = 'Product Deleted'
+      redirect_to products_path and return
+    else
+      flash[:warning] = 'You must be signed in.'
+      redirect_to products_path
+    end
   end
 
   protected
@@ -50,4 +55,5 @@ class ProductsController < ApplicationController
       :title, :brand_id, :category_id, :description
     )
   end
+
 end

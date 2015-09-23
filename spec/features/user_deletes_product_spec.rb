@@ -6,24 +6,31 @@ feature 'deletes account', %{
   So that the product information is no longer retained by the app
 
   Acceptance Criteria:
-  - [ ] I must be signed in.
-  - [ ] The item should disappear when I click delete product
-  - [ ] The information must be deleted from the database
-  - [ ] I must be notified if my update was successful or unsuccessful.
+  - [x] I must be signed in.
+  - [x] The item should disappear when I click delete product
+  - [x] The information must be deleted from the database
+  - [x] I must be notified if my update was successful or unsuccessful.
 } do
+  let!(:brand) { Brand.create(name: 'Levis') }
+  let!(:category) { Category.create(name: "Pants") }
+  let!(:product) do
+    FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id)
+  end
 
   scenario 'Logged in user clicks delete product' do
     user = FactoryGirl.create(:user)
-    brand = Brand.create(name: 'JNCO')
-    category = Category.create(name: 'Pants')
     sign_in(user)
-    product = FactoryGirl.create(
-      :product, brand: brand, category: category
-    )
     visit product_path(product)
     click_link 'Delete Product'
     expect(page).to have_content('Product Deleted')
     expect(page).to have_no_content(product.title)
+  end
+
+  scenario 'Non-user clicks delete product' do
+    visit product_path(product)
+    click_link 'Delete Product'
+    expect(page).to have_no_content('Product Deleted')
+    expect(page).to have_content('You must be signed in.')
   end
 
 end
