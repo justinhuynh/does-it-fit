@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'deletes account', %{
+feature 'deletes product', %{
   As an authenticated user
   I want to delete a product
   So that the product information is no longer retained by the app
@@ -14,7 +14,7 @@ feature 'deletes account', %{
   let!(:brand) { Brand.create(name: 'Levis') }
   let!(:category) { Category.create(name: "Pants") }
   let!(:product) do
-    FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id)
+    FactoryGirl.create(:product)
   end
 
   scenario 'Logged in user clicks delete product' do
