@@ -29,7 +29,7 @@ feature 'user updates a product', %{
     expect(page).to have_content('Product Successfully Added')
   end
 
-  scenario 'user unsuccessfully adds a product' do
+  scenario 'user unsuccessfully fills out product form' do
     sign_in(user)
     visit edit_product_path(product)
     fill_in 'Title', with: ''
@@ -41,4 +41,8 @@ feature 'user updates a product', %{
     expect(page).to have_content('Title can\'t be blank')
   end
 
+  scenario 'user is not logged in and tries to edit product.' do
+    visit edit_product_path(product)
+    expect(page).to have_content('You need to sign in to do that!')
+  end
 end

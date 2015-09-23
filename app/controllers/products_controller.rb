@@ -12,18 +12,28 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save
-      flash[:success] = 'Product Successfully Added'
-      redirect_to '/products'
+    if current_user
+      @product = Product.new(product_params)
+      if @product.save
+        flash[:success] = 'Product Successfully Added'
+        redirect_to '/products'
+      else
+        flash[:warning] = @product.errors.full_messages.join(', ')
+        render :new
+      end
     else
       flash[:warning] = @product.errors.full_messages.join(', ')
-      render :new
+      redirect_to products_path
     end
   end
 
   def edit
-    @product = Product.find(params[:id])
+    if current_user
+      @product = Product.find(params[:id])
+    else
+      flash[:error] = "You need to sign in to do that!"
+      redirect_to products_path
+    end
   end
 
   def update
