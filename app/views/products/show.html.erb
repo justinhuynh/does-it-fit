@@ -1,18 +1,26 @@
 <h4>This is the product details page</h4>
-Category: <%= @product.category.name %>
+Category: <%= @product.category %>
   <br>
 Product: <%= @product.title %>
   <br>
 Description: <%= @product.description %>
   <br>
-Brand Name: <%= @product.brand.name %>
+Brand Name: <%= @product.brand %>
+  <p>
+<%= link_to 'Go Back', products_path %>
+  <p>
+<%= link_to 'Edit Product Info', edit_product_path(@product.id) %>
+  <p>
 
-<p>
-  <%= link_to 'Go Back', products_path %>
-</p>
-<p>
-  <%= link_to 'Edit Product Info', edit_product_path(@product.id) %>
-</p>
-<p>
-  <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
-</p>
+
+<h4>Check out these reviews!</h4>
+<% @product.reviews.each do |review| %>
+  <% count ||= 0 %>
+  <% count += 1 %>
+  Review #<%= count %>
+    <br>
+  Title: <%= review.title %>
+    <br>
+  Review: <%= review.body %>
+    <p>
+<% end %>
