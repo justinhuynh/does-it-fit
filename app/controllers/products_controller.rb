@@ -41,7 +41,8 @@ class ProductsController < ApplicationController
     if current_user
       Product.find(params[:id]).destroy
       flash[:success] = 'Product Deleted'
-      redirect_to products_path and return
+      redirect_to products_path
+      return
     else
       flash[:warning] = 'You must be signed in.'
       redirect_to products_path
@@ -55,5 +56,4 @@ class ProductsController < ApplicationController
       :title, :brand_id, :category_id, :description
     )
   end
-
 end
