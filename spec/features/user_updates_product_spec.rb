@@ -12,23 +12,15 @@ feature 'user updates a product', %{
   - []  I must get a success message and be brougt to the
         product page on success
 } do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:brand) { Brand.create(name: 'Levis') }
-  let(:category) { Category.create(name: "Pants") }
-  let(:product) do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:brand) { Brand.create(name: 'Levis') }
+  let!(:category) { Category.create(name: "Pants") }
+  let!(:product) do
     FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id)
-  end
-  before :each do
-    user
-    brand
-    category
-    product
   end
   scenario 'user successfully updates product' do
     sign_in(user)
-    visit '/products'
-    click_link product.title
-    click_link 'Edit Product Info'
+    visit edit_product_path(product)
     fill_in 'Title', with: product.title
     select brand.name, from: 'Brand'
     select category.name, from: 'Category'
@@ -39,9 +31,7 @@ feature 'user updates a product', %{
 
   scenario 'user unsuccessfully adds a product' do
     sign_in(user)
-    visit '/products'
-    click_link product.title
-    click_link 'Edit Product Info'
+    visit edit_product_path(product)
     fill_in 'Title', with: ''
     select brand.name, from: 'Brand'
     select category.name, from: 'Category'

@@ -11,21 +11,14 @@ feature 'user adds new product', %{
   - []  I must recieve an error message for invalid form
   - []  I must get a success message and be brougt to the home page on success
 } do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:brand) { Brand.create(name: 'Levis') }
-  let(:category) { Category.create(name: "Pants") }
-  let(:product) { FactoryGirl.create(:product) }
-  before :each do
-    user
-    brand
-    category
-    product
-  end
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:brand) { Brand.create(name: 'Levis') }
+  let!(:category) { Category.create(name: "Pants") }
+  let!(:product) { FactoryGirl.create(:product) }
 
   scenario 'user successfully adds product' do
     sign_in(user)
-    visit '/products'
-    click_link 'Add New Product'
+    visit new_product_path
     fill_in 'Title', with: product.title
     select brand.name, from: 'Brand'
     select category.name, from: 'Category'
@@ -36,8 +29,7 @@ feature 'user adds new product', %{
 
   scenario 'user unsuccessfully adds a product' do
     sign_in(user)
-    visit '/products'
-    click_link 'Add New Product'
+    visit new_product_path
     select brand.name, from: 'Brand'
     select category.name, from: 'Category'
     fill_in 'Description', with: product.description

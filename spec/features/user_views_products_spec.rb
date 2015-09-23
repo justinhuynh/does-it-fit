@@ -8,24 +8,18 @@ feature 'user views products on products page', %{
   Acceptance Criteria:
   - [√] I must see a list of products
 } do
-  let(:brand) { Brand.create(name: 'Levis') }
-  let(:category) { Category.create(name: "Pants") }
-  let(:product) do
+  let!(:brand) { Brand.create(name: 'Levis') }
+  let!(:category) { Category.create(name: "Pants") }
+  let!(:product) do
     FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id)
   end
-  before :each do
-    brand
-    category
-    product
-  end
   scenario 'views list of products' do
-    visit '/products'
+    visit products_path
     expect(page).to have_content(product.title)
   end
 
   scenario 'views product details' do
-    visit '/products'
-    click_link product.title
+    visit product_path(product)
     expect(page).to have_content(product.title)
     expect(page).to have_content(product.brand.name)
     expect(page).to have_content(product.category.name)
