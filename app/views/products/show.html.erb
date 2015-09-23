@@ -6,12 +6,15 @@ Product: <%= @product.title %>
 Description: <%= @product.description %>
   <br>
 Brand Name: <%= @product.brand %>
-  <p>
-<%= link_to 'Go Back', products_path %>
-  <p>
-<%= link_to 'Edit Product Info', edit_product_path(@product.id) %>
-  <p>
-
+<p>
+  <%= link_to 'Go Back', products_path %>
+</p>
+<p>
+  <%= link_to 'Edit Product Info', edit_product_path(@product.id) %>
+</p>
+<p>
+  <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
+</p>
 
 <h4>Check out these reviews!</h4>
 <% @product.reviews.each do |review| %>
