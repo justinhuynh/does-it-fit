@@ -15,7 +15,9 @@ feature 'user updates a product', %{
   let(:user) { FactoryGirl.create(:user) }
   let(:brand) { Brand.create(name: 'Levis') }
   let(:category) { Category.create(name: "Pants") }
-  let(:product) { FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id) }
+  let(:product) { FactoryGirl.create(
+    :product, category_id: category.id, brand_id: brand.id
+    ) }
   before :each do
     user
     brand
