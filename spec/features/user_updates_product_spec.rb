@@ -12,14 +12,18 @@ feature 'user updates a product', %{
   - []  I must get a success message and be brougt to the
         product page on success
 } do
-
+  let(:user) { FactoryGirl.create(:user) }
+  let(:brand) { Brand.create(name: 'Levis') }
+  let(:category) { Category.create(name: "Pants") }
+  let(:product) { FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id) }
+  before :each do
+    user
+    brand
+    category
+    product
+  end
   scenario 'user successfully updates product' do
-    sign_in
-    category = Category.create(name: "Pants")
-    brand = Brand.create(name: 'Levis')
-    product = FactoryGirl.create(
-      :product, category_id: category.id, brand_id: brand.id
-    )
+    sign_in(user)
     visit '/products'
     click_link product.title
     click_link 'Edit Product Info'
@@ -32,12 +36,7 @@ feature 'user updates a product', %{
   end
 
   scenario 'user unsuccessfully adds a product' do
-    sign_in
-    category = Category.create(name: "Pants")
-    brand = Brand.create(name: 'Levis')
-    product = FactoryGirl.create(
-      :product, category_id: category.id, brand_id: brand.id
-    )
+    sign_in(user)
     visit '/products'
     click_link product.title
     click_link 'Edit Product Info'
@@ -50,13 +49,4 @@ feature 'user updates a product', %{
     expect(page).to have_content('Title can\'t be blank')
   end
 
-end
-
-def sign_in
-  user = FactoryGirl.create(:user)
-  visit '/'
-  click_link 'Sign In'
-  fill_in 'Email', with: user.email
-  fill_in 'Password', with: user.password
-  click_button 'Log in'
 end
