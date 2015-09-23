@@ -1,0 +1,15 @@
+<h4>This is the product details page</h4>
+Category: <%= @product.category.name %>
+  <br>
+Product: <%= @product.title %>
+  <br>
+Description: <%= @product.description %>
+  <br>
+Brand Name: <%= @product.brand.name %>
+
+<p>
+  <%= link_to 'Go Back', products_path %>
+</p>
+<p>
+  <%= link_to 'Edit Product Info', edit_product_path(@product.id) %>
+</p>

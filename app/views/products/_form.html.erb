@@ -1,0 +1,11 @@
+<%= form_for @product do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :brand_id %>
+  <%= f.collection_select :brand_id, Brand.all, :id, :name %>
+  <%= f.label :category_id %>
+  <%= f.collection_select :category_id, Category.all, :id, :name %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.submit class: "button radius" %>
+<% end %>
