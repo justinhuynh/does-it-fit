@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :brands, only: [:index]
   resources :products
   resources :categories, only: [:index]
+  resources :reviews
 end
