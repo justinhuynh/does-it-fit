@@ -20,8 +20,7 @@ feature 'user views products on products page', %{
     brand = create_brand
     category = create_category
     sign_in
-    product = FactoryGirl.create(:product, brand_id: brand.id, \
-    category_id: category.id)
+    product = FactoryGirl.create(:product, brand_id: brand.id, category_id: category.id)
     visit '/products'
     click_link product.title
     expect(page).to have_content(product.title)
