@@ -17,4 +17,20 @@ FactoryGirl.define do
     description 'great shoes for the family in the snow!'
   end
 
+  factory :category do
+    name 'Pants'
+  end
+
+  factory :brand do
+    name 'Hugo'
+  end
+
+  factory :review do
+    title 'This is awesome'
+    body 'Fits my body so nicely'
+    product_fit 7
+    user_id 1
+    product_id 1
+  end
+
 end
