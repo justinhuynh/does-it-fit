@@ -38,9 +38,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    #
   end
-  
+
   protected
 
   def product_params
