@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
   def destroy
     #
   end
-
+  
   protected
 
   def product_params
