@@ -9,7 +9,6 @@ feature 'user views reviews of a product', %{
   Acceptance Criteria:
   - [√] I must see the reviews for that product
 } do
-
   let!(:product) { FactoryGirl.create(:product) }
   let!(:review) { FactoryGirl.create(:review) }
 
