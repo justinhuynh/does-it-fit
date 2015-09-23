@@ -20,7 +20,8 @@ feature 'user views products on products page', %{
     brand = create_brand
     category = create_category
     sign_in
-    product = FactoryGirl.create(:product, brand_id: brand.id, category_id: category.id)
+    product = FactoryGirl.create(:product, brand_id: brand.id, \
+    category_id: category.id)
     visit '/products'
     click_link product.title
     expect(page).to have_content(product.title)
@@ -29,18 +30,6 @@ feature 'user views products on products page', %{
     expect(page).to have_content(product.description)
   end
 end
-
-
-
-# factory :product do
-#   title 'Albert snow shoes'
-#   brand_id 1
-#   category_id 1
-#   image_url 'http://www.cg.cfpsa.ca/cg-pc
-#   /Moncton/EN/Rentals/Equipment/PublishingImages/rental%20snow%20shoes.jpg'
-#   vendor_url 'www.amazon.com'
-#   description 'great shoes for the family in the snow!'
-# end
 
 def sign_in
   user = FactoryGirl.create(:user)

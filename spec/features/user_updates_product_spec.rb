@@ -9,14 +9,16 @@ feature 'user updates a product', %{
   - [√] I must be logged in
   - []  I must provide title, brand, and category
   - []  I must recieve an error message for invalid form
-  - []  I must get a success message and be brougt to the product page on success
+  - []  I must get a success message and be brougt to the
+        product page on success
 } do
 
   scenario 'user successfully updates product' do
     sign_in
     category = Category.create(name: "Pants")
     brand = Brand.create(name: 'Levis')
-    product = FactoryGirl.create(:product, category_id: category.id, brand_id: brand.id)
+    product = FactoryGirl.create(:product, category_id: category.id, \
+    brand_id: brand.id)
     visit '/products'
     click_link product.title
     click_link 'Edit Product Info'

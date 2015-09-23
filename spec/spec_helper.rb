@@ -28,7 +28,6 @@ require 'coveralls'
 Coveralls.wear!('rails')
 
 RSpec.configure do |config|
-  #config.include SpecTestHelper, :type => :controller
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
