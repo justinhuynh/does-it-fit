@@ -6,10 +6,10 @@ feature 'user adds new product', %{
   So that so that people can review it
 
   Acceptance Criteria:
-  - [√] I must be logged in
-  - []  I must provide title, brand, and category
-  - []  I must recieve an error message for invalid form
-  - []  I must get a success message and be brougt to the home page on success
+  - [x] I must be logged in
+  - [x]  I must provide title, brand, and category
+  - [x]  I must recieve an error message for invalid form
+  - [x]  I must get a success message and be brougt to the home page on success
 } do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:brand) { FactoryGirl.create(:brand) }

@@ -11,11 +11,7 @@ feature 'deletes product', %{
   - [x] The information must be deleted from the database
   - [x] I must be notified if my update was successful or unsuccessful.
 } do
-  let!(:brand) { FactoryGirl.create(:brand) }
-  let!(:category) { FactoryGirl.create(:category) }
-  let!(:product) do
-    FactoryGirl.create(:product, brand: brand, category: category)
-  end
+  let!(:product) { FactoryGirl.create(:product) }
 
   scenario 'Logged in user clicks delete product' do
     user = FactoryGirl.create(:user)

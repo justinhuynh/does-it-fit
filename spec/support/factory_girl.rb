@@ -15,21 +15,32 @@ FactoryGirl.define do
     sequence(:name) { |n| "#{n} Hugo" }
   end
 
+  factory :review do
+    sequence(:title) { |n| "This is awesome #{n}" }
+    body 'Fits my body so nicely'
+    product_fit 5
+    user
+    product
+  end
+
   factory :product do
     sequence(:title) { |n| "#{n} Albert snow shoes" }
-    brand FactoryGirl.create(:brand)
-    category FactoryGirl.create(:category)
+    brand
+    category
     image_url 'http://www.cg.cfpsa.ca/cg-pc
     /Moncton/EN/Rentals/Equipment/PublishingImages/rental%20snow%20shoes.jpg'
     vendor_url 'www.amazon.com'
     description 'great shoes for the family in the snow!'
+
+    factory :product_with_reviews do
+      after(:create) do |product|
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+      end
+    end
   end
 
-  factory :review do
-    title 'This is awesome'
-    body 'Fits my body so nicely'
-    product_fit 7
-    user_id FactoryGirl.create(:user)
-    product_id FactoryGirl.create(:product)
-  end
+
 end
