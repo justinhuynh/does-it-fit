@@ -265,8 +265,8 @@ Style/SymbolProc:
 Style/MultilineOperationIndentation:
   EnforcedStyle: indented
 
-# Style/EmptyLinesAroundBlockBody:
-#   Enabled: false
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
 
 Style/UnneededPercentQ:
   Enabled: false
