@@ -20,7 +20,6 @@ feature 'user adds review of a product', %{
     fill_in 'Title', with: 'My Review'
     fill_in 'Body', with: 'This doesn\'t fit!'
     fill_in 'Product fit', with: 3
-save_and_open_page
     click_button 'Create Review'
     expect(page).to have_content('Review successfully added')
     expect(page).to have_content('My Review')
@@ -34,10 +33,9 @@ save_and_open_page
     fill_in 'Product fit', with: 'asdf'
 
     click_button 'Create Review'
-
-    expect(page).to have_content('Add a new product!')
+    save_and_open_page
     expect(page).to have_content('Title can\'t be blank')
-    expect(page).to have_content('Product fit must be an integer')
+    expect(page).to have_content('Product fit is not included in the list')
     save_and_open_page
   end
 end
