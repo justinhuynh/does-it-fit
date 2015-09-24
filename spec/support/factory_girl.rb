@@ -7,30 +7,29 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :category do
+    sequence(:name) { |n| "#{n} Pants" }
+  end
+
+  factory :brand do
+    sequence(:name) { |n| "#{n} Hugo" }
+  end
+
   factory :product do
-    title 'Albert snow shoes'
-    brand_id 1
-    category_id 1
+    sequence(:title) { |n| "#{n} Albert snow shoes" }
+    brand FactoryGirl.create(:brand)
+    category FactoryGirl.create(:category)
     image_url 'http://www.cg.cfpsa.ca/cg-pc
     /Moncton/EN/Rentals/Equipment/PublishingImages/rental%20snow%20shoes.jpg'
     vendor_url 'www.amazon.com'
     description 'great shoes for the family in the snow!'
   end
 
-  factory :category do
-    name 'Pants'
-  end
-
-  factory :brand do
-    name 'Hugo'
-  end
-
   factory :review do
     title 'This is awesome'
     body 'Fits my body so nicely'
     product_fit 7
-    user_id 1
-    product_id 1
+    user_id FactoryGirl.create(:user)
+    product_id FactoryGirl.create(:product)
   end
-
 end

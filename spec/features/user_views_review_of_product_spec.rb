@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 feature 'user views reviews of a product', %{
   As a prospective user
@@ -9,12 +8,15 @@ feature 'user views reviews of a product', %{
   Acceptance Criteria:
   - [√] I must see the reviews for that product
 } do
-  let!(:product) { FactoryGirl.create(:product) }
-  let!(:review) { FactoryGirl.create(:review) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:brand) { FactoryGirl.create(:brand) }
+  let!(:category) { FactoryGirl.create(:category) }
+  let!(:product) { FactoryGirl.create(:product, brand: brand, category: category) }
+  let!(:review) { FactoryGirl.create(:review, user: user, product: product) }
 
   scenario 'see reviews of a product' do
     visit product_path(product)
-    expect(page).to have_content(product.reviews[0])
-    expect(page).to have_content(product.reviews[0])
+    expect(page).to have_content(product.reviews[0].title)
+    expect(page).to have_content(product.reviews[0].body)
   end
 end

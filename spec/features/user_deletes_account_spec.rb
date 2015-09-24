@@ -11,7 +11,7 @@ feature 'deletes account', %{
   - [X] My information must be deleted from the database
   - [X] I must be notified if my update was successful or unsuccessful.
 } do
-
+  
   scenario 'Logged in user clicks delete account' do
     user = FactoryGirl.create(:user)
     visit new_user_session_path
@@ -23,5 +23,4 @@ feature 'deletes account', %{
     expect(page).to have_content('Bye!')
     expect(User.find_by(email: user.email)).to be_nil
   end
-
 end

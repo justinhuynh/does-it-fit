@@ -13,11 +13,10 @@ feature 'user updates a product', %{
         product page on success
 } do
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:brand) { Brand.create(name: 'Levis') }
-  let!(:category) { Category.create(name: "Pants") }
-  let!(:product) do
-    FactoryGirl.create(:product)
-  end
+  let!(:brand) { FactoryGirl.create(:brand) }
+  let!(:category) { FactoryGirl.create(:category) }
+  let!(:product) { FactoryGirl.create(:product, brand: brand, category: category) }
+
   scenario 'user successfully updates product' do
     sign_in(user)
     visit edit_product_path(product)
@@ -29,7 +28,7 @@ feature 'user updates a product', %{
     expect(page).to have_content('Product Successfully Added')
   end
 
-  scenario 'user unsuccessfully adds a product' do
+  scenario 'user unsuccessfully updates a product' do
     sign_in(user)
     visit edit_product_path(product)
     fill_in 'Title', with: ''
@@ -40,5 +39,4 @@ feature 'user updates a product', %{
     expect(page).to have_content('Edit Product!')
     expect(page).to have_content('Title can\'t be blank')
   end
-
 end

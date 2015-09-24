@@ -11,7 +11,9 @@ feature 'deletes product', %{
   - [x] The information must be deleted from the database
   - [x] I must be notified if my update was successful or unsuccessful.
 } do
-  let!(:product) { FactoryGirl.create(:product) }
+  let!(:brand) { FactoryGirl.create(:brand) }
+  let!(:category) { FactoryGirl.create(:category) }
+  let!(:product) { FactoryGirl.create(:product, brand: brand, category: category) }
 
   scenario 'Logged in user clicks delete product' do
     user = FactoryGirl.create(:user)
@@ -28,5 +30,4 @@ feature 'deletes product', %{
     expect(page).to have_no_content('Product Deleted')
     expect(page).to have_content('You must be signed in.')
   end
-
 end
