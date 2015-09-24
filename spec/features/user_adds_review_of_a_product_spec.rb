@@ -9,7 +9,8 @@ feature 'user adds review of a product', %{
   - [√] I must be logged in
   - [√] I must provide title, body, product fit
   - [√] I must recieve an error message for invalid form
-  - [√] I must get a success message and be brougt to the home page on success
+  - [√] I must get a success message and be brought
+        to the home page on success
 } do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:product) { FactoryGirl.create(:product) }
@@ -46,6 +47,7 @@ feature 'user adds review of a product', %{
     fill_in 'Product fit', with: 3
     click_button 'Create Review'
     expect(page).to_not have_content('Review successfully added')
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to have_content('You need to sign in or
+      sign up before continuing.')
   end
 end
