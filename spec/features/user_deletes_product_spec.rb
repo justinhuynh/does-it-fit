@@ -13,7 +13,9 @@ feature 'deletes product', %{
 } do
   let!(:brand) { FactoryGirl.create(:brand) }
   let!(:category) { FactoryGirl.create(:category) }
-  let!(:product) { FactoryGirl.create(:product, brand: brand, category: category) }
+  let!(:product) do
+    FactoryGirl.create(:product, brand: brand, category: category)
+  end
 
   scenario 'Logged in user clicks delete product' do
     user = FactoryGirl.create(:user)

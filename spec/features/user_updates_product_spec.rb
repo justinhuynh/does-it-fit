@@ -15,7 +15,9 @@ feature 'user updates a product', %{
   let!(:user) { FactoryGirl.create(:user) }
   let!(:brand) { FactoryGirl.create(:brand) }
   let!(:category) { FactoryGirl.create(:category) }
-  let!(:product) { FactoryGirl.create(:product, brand: brand, category: category) }
+  let!(:product) do
+    FactoryGirl.create(:product, brand: brand, category: category)
+  end
 
   scenario 'user successfully updates product' do
     sign_in(user)

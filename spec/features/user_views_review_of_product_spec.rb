@@ -11,8 +11,12 @@ feature 'user views reviews of a product', %{
   let!(:user) { FactoryGirl.create(:user) }
   let!(:brand) { FactoryGirl.create(:brand) }
   let!(:category) { FactoryGirl.create(:category) }
-  let!(:product) { FactoryGirl.create(:product, brand: brand, category: category) }
-  let!(:review) { FactoryGirl.create(:review, user: user, product: product) }
+  let!(:product) do
+    FactoryGirl.create(:product, brand: brand, category: category)
+  end
+  let!(:review) do
+    FactoryGirl.create(:review, user: user, product: product)
+  end
 
   scenario 'see reviews of a product' do
     visit product_path(product)

@@ -11,7 +11,9 @@ feature 'user views products on products page', %{
 } do
   let!(:brand) { FactoryGirl.create(:brand) }
   let!(:category) { FactoryGirl.create(:category) }
-  let!(:product) { FactoryGirl.create(:product, brand: brand, category: category) }
+  let!(:product) do
+    FactoryGirl.create(:product, brand: brand, category: category)
+  end
 
   scenario 'views list of products' do
     visit products_path
