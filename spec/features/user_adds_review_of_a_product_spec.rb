@@ -39,13 +39,13 @@ feature 'user adds review of a product', %{
     end
   end
 
-  scenario 'Non-user tries to review product' do
+  scenario 'user is not signed in' do
     visit product_path(product)
     fill_in 'Title', with: 'My Review'
     fill_in 'Body', with: 'This doesn\'t fit!'
     fill_in 'Product fit', with: 3
     click_button 'Create Review'
-    expect(page).to have_no_content('Review successfully added')
-    expect(page).to have_content('You must be signed in')
+    expect(page).to_not have_content('Review successfully added')
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end

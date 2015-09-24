@@ -33,4 +33,11 @@ feature 'user updates a product', %{
     expect(page).to have_content('Edit Product!')
     expect(page).to have_content('Title can\'t be blank')
   end
+
+  scenario 'user is not signed in' do
+    visit product_path(product)
+    click_link 'Edit Product Info'
+    expect(page).to_not have_content('Product Deleted')
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
+  end
 end
