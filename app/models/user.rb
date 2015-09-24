@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   has_many :reviews
 
   validates :email, uniqueness: true
-  validates :reset_password_token, uniqueness: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

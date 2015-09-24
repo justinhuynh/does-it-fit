@@ -1,0 +1,9 @@
+<%= form_for [@product, @review] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+  <%= f.label :product_fit %>
+  <%= f.text_area :product_fit %>
+  <%= f.submit class: "button radius" %>
+<% end %>
