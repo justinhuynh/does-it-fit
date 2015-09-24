@@ -17,8 +17,8 @@ Brand Name: <%= @product.brand.name %>
 </p>
 
 <h4>Check out these reviews!</h4>
+<% count = 0 %>
 <% @reviews.each do |review| %>
-  <% count ||= 0 %>
   <% count += 1 %>
   Review #<%= count %>
     <br>
