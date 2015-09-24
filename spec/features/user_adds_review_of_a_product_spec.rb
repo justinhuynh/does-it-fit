@@ -33,9 +33,7 @@ feature 'user adds review of a product', %{
     fill_in 'Product fit', with: 'asdf'
 
     click_button 'Create Review'
-    save_and_open_page
     expect(page).to have_content('Title can\'t be blank')
     expect(page).to have_content('Product fit is not included in the list')
-    save_and_open_page
   end
 end

@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
-
   def create
-    @user= current_user
+    @user = current_user
     @product = Product.find(params[:product_id])
     @review = Review.new(review_params)
     @review.product = @product
@@ -17,7 +16,9 @@ class ReviewsController < ApplicationController
   end
 
   protected
+
   def review_params
-    params.require(:review).permit(:title, :body, :product, :product_fit, :user_id, :product_id)
+    params.require(:review).permit(:title, :body, :product, :product_fit,
+    :user_id, :product_id)
   end
 end
