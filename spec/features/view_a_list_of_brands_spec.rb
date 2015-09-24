@@ -10,11 +10,11 @@ feature 'user views brands', %{
   all the brands from the database displayed on the page
 
 } do
-  scenario 'specify valid credentials' do
-    brand = Brand.create(name: 'Levi\'s')
-    brand2 = Brand.create(name: 'Carhart')
-    visit '/brands'
-    expect(page).to have_content(brand.name)
-    expect(page).to have_content(brand2.name)
+  scenario 'user navigates to brands page' do
+    brand_1 = FactoryGirl.create(:brand)
+    brand_2 = FactoryGirl.create(:brand)
+    visit brands_path
+    expect(page).to have_content(brand_1.name)
+    expect(page).to have_content(brand_2.name)
   end
 end

@@ -1,11 +1,11 @@
 <h4>This is the product details page</h4>
-Category: <%= @product.category %>
+Category: <%= @product.category.name %>
   <br>
 Product: <%= @product.title %>
   <br>
 Description: <%= @product.description %>
   <br>
-Brand Name: <%= @product.brand %>
+Brand Name: <%= @product.brand.name %>
 <p>
   <%= link_to 'Go Back', products_path %>
 </p>
@@ -17,12 +17,14 @@ Brand Name: <%= @product.brand %>
 </p>
 
 <h4>Check out these reviews!</h4>
-<% @product.reviews.each do |review| %>
+<% @reviews.each do |review| %>
   <% count ||= 0 %>
   <% count += 1 %>
   Review #<%= count %>
     <br>
   Title: <%= review.title %>
+    <br>
+  Product Fit: <%= review.product_fit %>
     <br>
   Review: <%= review.body %>
     <p>

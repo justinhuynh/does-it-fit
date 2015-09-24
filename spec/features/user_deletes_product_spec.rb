@@ -28,5 +28,4 @@ feature 'deletes product', %{
     expect(page).to have_no_content('Product Deleted')
     expect(page).to have_content('You must be signed in.')
   end
-
 end
