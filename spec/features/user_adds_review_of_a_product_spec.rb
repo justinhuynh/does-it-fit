@@ -38,7 +38,7 @@ feature 'user adds review of a product', %{
       expect(page).to have_content('Product fit is not included in the list')
     end
   end
-  
+
   scenario 'Non-user tries to review product' do
     visit product_path(product)
     fill_in 'Title', with: 'My Review'
