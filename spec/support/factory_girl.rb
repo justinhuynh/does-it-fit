@@ -33,4 +33,16 @@ FactoryGirl.define do
     product_id 1
   end
 
+  factory :edit_review, :class => 'Review' do
+    title 'Review is changed!'
+    body 'I had to change my review'
+    product_fit 4
+    user_id 1
+    product_id 1
+  end
+
+  factory :current_user, :class => 'User' do
+    user current_user
+  end
+  
 end

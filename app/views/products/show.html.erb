@@ -18,6 +18,7 @@ Brand Name: <%= @product.brand %>
 
 <h4>Check out these reviews!</h4>
 <% @product.reviews.each do |review| %>
+  <p>
   <% count ||= 0 %>
   <% count += 1 %>
   Review #<%= count %>
@@ -26,6 +27,7 @@ Brand Name: <%= @product.brand %>
     <br>
   Review: <%= review.body %>
     <p>
+      <%= button_to 'Edit review', products_path(@product), :class => "button", :method => :post %>
 <% end %>
 
 <%= render 'reviews/form' %>

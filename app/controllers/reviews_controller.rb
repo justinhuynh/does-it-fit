@@ -19,6 +19,16 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @review = Review.find(:product_id)
+    @product = @review.product
+    @product.reviews.each do |review |
+      review.update(best: false)
+    end
+      @review.update(best: true)
+      redirect_to @product
+    end
+
   protected
 
   def review_params
