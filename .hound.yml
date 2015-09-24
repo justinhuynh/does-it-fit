@@ -118,9 +118,6 @@ LambdaCall:
 LineEndConcatenation:
   Enabled: false
 
-LineLength:
-  Max: 80
-
 MethodLength:
   Enabled: false
 
@@ -269,7 +266,7 @@ Style/MultilineOperationIndentation:
   EnforcedStyle: indented
 
 Style/EmptyLinesAroundBlockBody:
-  Enabled: false
+  Enabled: true
 
 Style/UnneededPercentQ:
   Enabled: false
