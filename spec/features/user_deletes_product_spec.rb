@@ -26,6 +26,6 @@ feature 'deletes product', %{
     visit product_path(product)
     click_link 'Delete Product'
     expect(page).to have_no_content('Product Deleted')
-    expect(page).to have_content('You must be signed in.')
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end
