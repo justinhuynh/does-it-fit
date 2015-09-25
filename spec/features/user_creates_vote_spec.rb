@@ -42,6 +42,7 @@ feature 'user votes on review', %{
     expect(vote_count).to eq(0)
 
     find('.down3').click
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to have_content('You need to sign in
+      or sign up before continuing.')
   end
 end
