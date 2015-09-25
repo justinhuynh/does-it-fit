@@ -16,9 +16,10 @@ Brand Name: <%= @product.brand.name %>
   <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
 </p>
 
+
 <h4>Check out these reviews!</h4>
+<% count ||= 0 %>
 <% @reviews.each do |review| %>
-  <% count ||= 0 %>
   <% count += 1 %>
   Review #<%= count %>
     <br>
@@ -28,6 +29,9 @@ Brand Name: <%= @product.brand.name %>
     <br>
   Review: <%= review.body %>
     <p>
+    <span id="vote_count_<%= count %>">213</span> <br>
+    <%= image_tag("up.png", class: "up#{count}") %>
+    <%= image_tag("down.png", class: "down#{count}") %><br>
 <% end %>
 
 <%= render 'reviews/form' %>
