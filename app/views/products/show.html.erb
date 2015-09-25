@@ -16,6 +16,17 @@ Brand Name: <%= @product.brand %>
   <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
 </p>
 
+
+<p>
+  Create a new review below!
+  <p>
+
+<%= render 'reviews/form' %>
+<p>
+  <p>
+
+
+
 <h4>Check out these reviews!</h4>
 <% @product.reviews.each do |review| %>
   <p>
@@ -23,11 +34,11 @@ Brand Name: <%= @product.brand %>
   <% count += 1 %>
   Review #<%= count %>
     <br>
+  Submitted by: <%= review.user %>
+    <br>
   Title: <%= review.title %>
     <br>
   Review: <%= review.body %>
     <p>
-      <%= button_to 'Edit review', products_path(@product), :class => "button", :method => :post %>
+          <%= button_to "Edit review", products_path %>
 <% end %>
-
-<%= render 'reviews/form' %>

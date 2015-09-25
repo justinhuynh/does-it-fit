@@ -19,13 +19,19 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(id = params[:id])
+    @product = Product.find(params[:product_id])
+    redirect_to edit_product_review_path
+  end
+
   def update
-    @review = Review.find(:product_id)
+    @review = Review.find(id = params[:id])
     @product = @review.product
     @product.reviews.each do |review |
-      review.update(best: false)
+      review.update(body: "new text")
     end
-      @review.update(best: true)
+      @review.update(body: "new text")
       redirect_to @product
     end
 

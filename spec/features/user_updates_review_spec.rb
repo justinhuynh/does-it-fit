@@ -16,20 +16,20 @@ feature 'user updates a review', %{
   # let!(:brand) { Brand.create(name: 'Levis') }
     # let!(:current_user) { FactoryGirl.create(:current_user) }
   # let!(:category) { Category.create(name: "Pants") }
-  let!(:review) { FactoryGirl.create(:review, user_id: current_user, product_id: 1) }
+  let!(:review) { FactoryGirl.create(:review, user_id: user.id, product_id: 1) }
   let!(:product) do
-    FactoryGirl.create(:product)
+    FactoryGirl.create(:product, id: 1)
   end
   scenario 'user successfully updates review' do
     sign_in(user)
-    visit product_path
-    click_button "Edit review"
+    visit product_path(product)
+    save_and_open_page
+    first(:button, "Edit review").click
     visit edit_product_path(product)
     fill_in 'Title', with: edit_review.title
     fill_in 'Body', with: edit_review.body
     fill_in 'Product Fit', with: edit_review.product_fit
     click_button 'Update Review'
-          save_and_open_page
     expect(page).to have_content('Review Successfully Editted!')
   end
 
