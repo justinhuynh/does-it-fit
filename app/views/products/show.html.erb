@@ -1,37 +1,56 @@
-<h4>This is the product details page</h4>
-Category: <%= @product.category.name %>
-  <br>
-Product: <%= @product.title %>
-  <br>
-Description: <%= @product.description %>
-  <br>
-Brand Name: <%= @product.brand.name %>
-<p>
-  <%= link_to 'Go Back', products_path %>
-</p>
-<p>
-  <%= link_to 'Edit Product Info', edit_product_path(@product.id) %>
-</p>
-<p>
-  <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
-</p>
+<div class = "row product-show">
+  <div class="large-12 large-centered columns">
+    <h2>This is the product details page</h2>
+    <p>Category: <%= @product.category.name %></p>
+    <p>Product: <%= @product.title %></p>
+    <p>Description: <%= @product.description %></p>
+    <p>Brand Name: <%= @product.brand.name %></p>
+    <div class "inline-list">
+      <%= link_to 'Go Back', products_path %> |
+      <%= link_to 'Edit Product Info', edit_product_path(@product.id) %> |
+      <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
+    </div>
+  </div>
+</div>
 
+<div class="row">
+  <div class="large-12 large-centered columns">
+    <h3 class="product-show">Check out these reviews!</h3>
+    <ul>
+      <% count ||= 0 %>
+      <% @reviews.each do |review| %>
+        <li class="review">
+          <% count += 1 %>
+          <h4>
+            Review #<%= count %>: <%= review.title %>
+          </h4>
+          <p>Product Fit: <%= review.product_fit %></p>
+          <p><%= review.body %></p>
+          <div class="votes">
+            <%= form_for @vote do |f| %>
+              <%= f.hidden_field "review_id", value: review.id %>
+              <%= f.hidden_field "helpful", value: true %>
+              <%= image_submit_tag "up.png", class: "up#{count}" %>
+              <span id="up_count_<%= count %>"><%= review.thumbs_up %></span>
+            <% end %>
+          </div>
+          <div class="votes">
+            <%= form_for @vote do |f| %>
+              <%= f.hidden_field "review_id", value: review.id %>
+              <%= f.hidden_field "helpful", value: false %>
+              <%= image_submit_tag "down.png", class: "down#{count}" %>
+              <span id="down_count_<%= count %>"><%= review.thumbs_down %></span>
+          <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-<h4>Check out these reviews!</h4>
-<% count ||= 0 %>
-<% @reviews.each do |review| %>
-  <% count += 1 %>
-  Review #<%= count %>
-    <br>
-  Title: <%= review.title %>
-    <br>
-  Product Fit: <%= review.product_fit %>
-    <br>
-  Review: <%= review.body %>
-    <p>
-    <span id="vote_count_<%= count %>">213</span> <br>
-    <%= image_tag("up.png", class: "up#{count}") %>
-    <%= image_tag("down.png", class: "down#{count}") %><br>
-<% end %>
-
-<%= render 'reviews/form' %>
+<div class="row review-form">
+  <div class="large-12 large-centered columns">
+    <h3>Add a review!</h3>
+    <%= render 'reviews/form' %>
+  </div>
+</div>

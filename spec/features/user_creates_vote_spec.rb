@@ -15,25 +15,33 @@ feature 'user votes on review', %{
   scenario 'user upvotes a review' do
     sign_in(user)
     visit product_path(product)
-    find('img.up1').click
-    save_and_open_page
-    # vote_count = find_by_id("vote_count_1").text.to_i
-    # expect(vote_count).to eq(213)
-    expect(product.reviews[0].thumbs_up).to eq(1)
+    vote_count = find_by_id("up_count_1").text.to_i
+    expect(vote_count).to eq(0)
+
+    find('.up1').click
+    vote_count = find_by_id("up_count_1").text.to_i
+    expect(vote_count).to eq(1)
     expect(page).to have_content('Thanks for your vote')
   end
 
   scenario 'user downvotes a review' do
     sign_in(user)
     visit product_path(product)
-    find('img.down1').click
-    expect(product.reviews[0].thumbs_down).to eq(1)
+    vote_count = find_by_id("down_count_2").text.to_i
+    expect(vote_count).to eq(0)
+
+    find('.down2').click
+    vote_count = find_by_id("down_count_2").text.to_i
+    expect(vote_count).to eq(1)
     expect(page).to have_content('Thanks for your vote')
   end
 
   scenario 'user is not signed in' do
     visit product_path(product)
-    find('img.down1').click
+    vote_count = find_by_id("down_count_3").text.to_i
+    expect(vote_count).to eq(0)
+
+    find('.down3').click
     expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end

@@ -54,3 +54,24 @@
     display: block;
     color: white;
 }
+
+.product-show {
+  padding: 20px;
+}
+
+.review {
+  padding: 20px;
+  margin-top: 10px;
+  list-style: none;
+  border: 2px solid #BBB;
+  border-radius: 20px;
+}
+
+.review-form {
+  padding: 20px;
+}
+
+.votes {
+  display: inline-block;
+  margin: 0px 10px;
+}
