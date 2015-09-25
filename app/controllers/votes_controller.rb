@@ -22,7 +22,7 @@ class VotesController < ApplicationController
   end
 
   protected
-  
+
   def vote_params
     params.require(:vote).permit(:helpful, :review_id)
   end
