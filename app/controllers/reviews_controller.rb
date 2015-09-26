@@ -20,20 +20,21 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(id = params[:id])
+    @review = Review.find(params[:id])
     @product = Product.find(params[:product_id])
-    redirect_to edit_product_review_path
   end
 
   def update
-    @review = Review.find(id = params[:id])
+    @review = Review.find(params[:id])
     @product = @review.product
-    @product.reviews.each do |review |
-      review.update(body: "new text")
-    end
-      @review.update(body: "new text")
+    if @review.update(review_params)
+      flash[:success] = 'review updated successfully!'
       redirect_to @product
+    else
+      flash[:warning] = @review.errors.full_messages.join(', ')
+      render :edit
     end
+  end
 
   protected
 

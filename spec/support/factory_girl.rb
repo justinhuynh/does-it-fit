@@ -44,5 +44,5 @@ FactoryGirl.define do
   factory :current_user, :class => 'User' do
     user current_user
   end
-  
+
 end

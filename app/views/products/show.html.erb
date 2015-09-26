@@ -28,9 +28,9 @@ Brand Name: <%= @product.brand %>
 
 
 <h4>Check out these reviews!</h4>
+  <% count ||= 0 %>
 <% @product.reviews.each do |review| %>
   <p>
-  <% count ||= 0 %>
   <% count += 1 %>
   Review #<%= count %>
     <br>
@@ -40,5 +40,7 @@ Brand Name: <%= @product.brand %>
     <br>
   Review: <%= review.body %>
     <p>
-          <%= button_to "Edit review", products_path %>
+  <% if current_user.email == review.user.email %>
+    <%= link_to 'Edit Review', [:edit, @product, review] %>
+    <% end %>
 <% end %>

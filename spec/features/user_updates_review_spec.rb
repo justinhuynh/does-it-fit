@@ -11,38 +11,62 @@ feature 'user updates a review', %{
   - []  I must get a success message and be brougt to the
         product page on success
 } do
-  let!(:user) { FactoryGirl.create(:user) }
-  let!(:edit_review) { FactoryGirl.create(:edit_review) }
-  # let!(:brand) { Brand.create(name: 'Levis') }
-    # let!(:current_user) { FactoryGirl.create(:current_user) }
-  # let!(:category) { Category.create(name: "Pants") }
-  let!(:review) { FactoryGirl.create(:review, user_id: user.id, product_id: 1) }
-  let!(:product) do
-    FactoryGirl.create(:product, id: 1)
-  end
-  scenario 'user successfully updates review' do
-    sign_in(user)
-    visit product_path(product)
-    save_and_open_page
-    first(:button, "Edit review").click
-    visit edit_product_path(product)
-    fill_in 'Title', with: edit_review.title
-    fill_in 'Body', with: edit_review.body
-    fill_in 'Product Fit', with: edit_review.product_fit
-    click_button 'Update Review'
-    expect(page).to have_content('Review Successfully Editted!')
-  end
+    context "user's email is test@gmail.com" do
+      let!(:user) { FactoryGirl.create(:user, email: 'test@gmail.com') }
+      let!(:edit_review) { FactoryGirl.create(:edit_review) }
+      let!(:review) { FactoryGirl.create(:review, user_id: user.id, product_id: 1) }
+      let!(:product) do
+        FactoryGirl.create(:product, id: 1)
+      end
+      scenario 'user successfully updates review' do
+        sign_in(user)
+        visit product_path(product)
+        first(:link, "Edit Review").click
 
-  # scenario 'user unsuccessfully adds a product' do
-  #   sign_in(user)
-  #   visit edit_product_path(product)
-  #   fill_in 'Title', with: ''
-  #   select brand.name, from: 'Brand'
-  #   select category.name, from: 'Category'
-  #   fill_in 'Description', with: product.description
-  #   click_button 'Update Product'
-  #   expect(page).to have_content('Edit Product!')
-  #   expect(page).to have_content('Title can\'t be blank')
-  # end
+        fill_in 'Title', with: edit_review.title
+        fill_in 'Body', with: edit_review.body
+        fill_in 'Product fit', with: edit_review.product_fit
+        click_button 'Update Review'
+        expect(page).to have_content('review updated successfully!')
+      end
 
+      scenario 'user unsuccessfully adds a product' do
+        sign_in(user)
+        visit product_path(product)
+        first(:link, "Edit Review").click
+        fill_in 'Title', with: ''
+        fill_in 'Body', with: ''
+        fill_in 'Product fit', with: ''
+        click_button 'Update Review'
+        save_and_open_page
+        expect(page).to_not have_content('review updated successfully!')
+        expect(page).to have_content('Title can\'t be blank')
+        expect(page).to have_content('Body can\'t be blank')
+        expect(page).to have_content('Product fit can\'t be blank')
+        expect(page).to have_content('Product fit is not a number')
+        expect(page).to have_content('Product fit is not included in the list')
+      end
+    end
+
+  context "user's email does not match the any review posters email" do
+    let!(:user_poster) { FactoryGirl.create(:user) }
+    let!(:user_trying_to_edit) { FactoryGirl.create(:user, email: 'test@gmail.com') }
+    let!(:edit_review) { FactoryGirl.create(:edit_review) }
+    let!(:product) do
+      FactoryGirl.create(:product, id: 1)
+    end
+    let!(:review) { FactoryGirl.create(:review, user_id: user_poster.id, product_id: 1) }
+
+    scenario 'user can only see the edit link to their review' do
+      sign_in(user_trying_to_edit)
+      visit product_path(product)
+      page.should_not have_selector(:link_or_button, 'Edit Review')
+    end
+
+  scenario 'user can only edit their own review' do
+    sign_in(user_trying_to_edit)
+    visit '/products/1/review/1/edit'
+    page.should_not have_selector(:link_or_button, 'Edit Review')
+  end
+  end
 end
