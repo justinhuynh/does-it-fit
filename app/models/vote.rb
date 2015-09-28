@@ -1,5 +1,6 @@
 class Vote < ActiveRecord::Base
   validates :review, presence: true
+  validates :user, presence: true
   belongs_to :review
   belongs_to :user
 

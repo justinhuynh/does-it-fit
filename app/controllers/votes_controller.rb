@@ -8,7 +8,6 @@ class VotesController < ApplicationController
     @vote = Vote.new(vote_params)
     @vote.user = @user
     @vote.review = @review
-
     if @vote.save
       flash[:notice] = 'Thanks for your vote'
       redirect_to product_path(@product)
