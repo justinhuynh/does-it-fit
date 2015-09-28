@@ -3,10 +3,11 @@ class VotesController < ApplicationController
 
   def create
     @user = current_user
-    @review = Review.find(vote_params[:review_id])
+    @review = Review.find(params[:review_id])
     @product = @review.product
     @vote = Vote.new(vote_params)
     @vote.user = @user
+    @vote.review = @review
 
     if @vote.save
       flash[:notice] = 'Thanks for your vote'
@@ -24,6 +25,6 @@ class VotesController < ApplicationController
   protected
 
   def vote_params
-    params.require(:vote).permit(:helpful, :review_id)
+    params.require(:vote).permit(:helpful)
   end
 end

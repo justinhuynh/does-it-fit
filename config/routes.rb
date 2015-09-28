@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :brands, only: [:index]
   resources :products do
-    resources :reviews, only: [:index, :new, :create] do
-    end
+    resources :reviews, only: [:index, :new, :create]
   end
-  resources :votes, only: [:create, :destroy]
+
+  resources :reviews, only: [] do
+    resources :votes, only: [:create, :destroy]
+  end
+  
   resources :categories, only: [:index]
 end

@@ -27,20 +27,10 @@
           <p>Product Fit: <%= review.product_fit %></p>
           <p><%= review.body %></p>
           <div class="votes">
-            <%= form_for @vote do |f| %>
-              <%= f.hidden_field "review_id", value: review.id %>
-              <%= f.hidden_field "helpful", value: true %>
-              <%= image_submit_tag "up.png", class: "up#{count}" %>
-              <span id="up_count_<%= count %>"><%= review.thumbs_up %></span>
-            <% end %>
+            <%= render 'votes/downvote', review: review, count: count %>
           </div>
           <div class="votes">
-            <%= form_for @vote do |f| %>
-              <%= f.hidden_field "review_id", value: review.id %>
-              <%= f.hidden_field "helpful", value: false %>
-              <%= image_submit_tag "down.png", class: "down#{count}" %>
-              <span id="down_count_<%= count %>"><%= review.thumbs_down %></span>
-          <% end %>
+            <%= render 'votes/upvote', review: review, count: count %>
           </div>
         </li>
       <% end %>
