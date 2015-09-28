@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @reviews = @product.reviews
     @review = Review.new
+    @vote = Vote.new(params[:vote])
   end
 
   def new
