@@ -42,7 +42,7 @@ Brand Name: <%= @product.brand.name %>
     <br>
   Review: <%= review.body %>
     <p>
-  <% if current_user.email == review.user.email %>
+  <% if current_user == review.user %>
     <%= link_to 'Edit Review', [:edit, @product, review] %>
     <% end %>
 <% end %>

@@ -12,11 +12,7 @@ feature 'deletes review', %{
   - [x] I must be notified if my update was successful or unsuccessful.
 } do
   let!(:user) { FactoryGirl.create(:user, id: 1, email: 'test@gmail.com') }
-  let!(:edit_review) { FactoryGirl.create(:edit_review) }
-  let!(:product) do
-    FactoryGirl.create(:product, id: 1)
-  end
-  let!(:review) { FactoryGirl.create(:review, user_id: user.id, product_id: 1) }
+  let!(:product) { FactoryGirl.create(:product_with_reviews) }
   #
   scenario 'Logged in user deletes review' do
     sign_in(user)

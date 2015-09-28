@@ -12,8 +12,9 @@ feature 'user updates a review', %{
         product page on success
 } do
     context "user's email is test@gmail.com" do
-      let!(:user) { FactoryGirl.create(:user, email: 'test@gmail.com') }
-      let!(:product) { FactoryGirl.create(:product_with_reviews) }
+      let!(:user) { FactoryGirl.create(:user) }
+      let!(:product) { FactoryGirl.create(:product) }
+      let!(:review) { FactoryGirl.create(:review, user: user, product: product) }
 
       scenario 'user successfully updates review' do
         sign_in(user)
@@ -35,7 +36,7 @@ feature 'user updates a review', %{
         fill_in 'Body', with: ''
         fill_in 'Product fit', with: ''
         click_button 'Update Review'
-        save_and_open_page
+
         expect(page).to_not have_content('review updated successfully!')
         expect(page).to have_content('Title can\'t be blank')
         expect(page).to have_content('Body can\'t be blank')
@@ -48,10 +49,8 @@ feature 'user updates a review', %{
   context "user's email does not match the any review posters email" do
     let!(:user_poster) { FactoryGirl.create(:user) }
     let!(:user_trying_to_edit) { FactoryGirl.create(:user, email: 'test@gmail.com') }
-    let!(:product) do
-      FactoryGirl.create(:product, id: 1)
-    end
-    let!(:review) { FactoryGirl.create(:review, user_id: user_poster.id, product_id: 1) }
+    let!(:product) { FactoryGirl.create(:product) }
+    let!(:review) { FactoryGirl.create(:review, user: user_poster, product: product) }
 
     scenario 'user can only see the edit link to their review' do
       sign_in(user_trying_to_edit)
@@ -59,10 +58,11 @@ feature 'user updates a review', %{
       page.should_not have_selector(:link_or_button, 'Edit Review')
     end
 
-  scenario 'user can only edit their own review' do
-    sign_in(user_trying_to_edit)
-    visit '/products/1/review/1/edit'
+    scenario 'user can only edit their own review' do
+      sign_in(user_trying_to_edit)
+      visit edit_polymorphic_path([product, review])
 
-  end
+      expect(page).to have_content("You can't someone elses review!")
+    end
   end
 end

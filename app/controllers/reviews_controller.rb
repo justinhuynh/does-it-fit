@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :require_permission, only: [:edit, :update]
 
   def create
     @user = current_user
@@ -38,4 +39,13 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:title, :body, :product_fit)
   end
+
+  def require_permission
+    @review = Review.find(params[:id])
+    if current_user != @review.user
+      flash[:error] = "You can't someone elses review!"
+      redirect_to root_path
+    end
+  end
+
 end
