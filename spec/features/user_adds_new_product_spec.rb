@@ -39,6 +39,7 @@ feature 'user adds new product', %{
 
   scenario 'user is not signed in' do
     visit new_product_path
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to have_content('You need to sign in or
+      sign up before continuing.')
   end
 end

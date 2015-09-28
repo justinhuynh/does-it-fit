@@ -38,6 +38,7 @@ feature 'user updates a product', %{
     visit product_path(product)
     click_link 'Edit Product Info'
     expect(page).to_not have_content('Product Deleted')
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to have_content("You need to sign in or
+      sign up before continuing.")
   end
 end

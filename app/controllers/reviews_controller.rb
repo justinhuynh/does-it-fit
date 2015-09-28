@@ -11,10 +11,6 @@ class ReviewsController < ApplicationController
     if @review.save
       flash[:notice] = 'Review successfully added'
       redirect_to product_path(@product)
-    # elsif
-      # @review.errors.full_messages.join(' ').include?('User')
-      # flash[:error] = 'You must be signed in'
-      # redirect_to product_path(@product)
     else
       flash[:error] = @review.errors.full_messages.join(' ')
       redirect_to product_path(@product)
