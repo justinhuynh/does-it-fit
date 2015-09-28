@@ -22,7 +22,7 @@
         <li class="review">
           <% count += 1 %>
           <h4>
-            Review #<%= count %>: <%= review.title %>
+          Review #<%= count %>: <%= review.title %>
           </h4>
           Submitted by: <%= review.user %>
             <br>
@@ -34,6 +34,7 @@
             <p>
           <% if current_user == review.user %>
             <%= link_to 'Edit Review', [:edit, @product, review] %>
+            <%= link_to "Delete Review", [@product, review], method: :delete %>
           <% end %>
           <div class="votes">
             <%= render 'votes/downvote', review: review, count: count %>
