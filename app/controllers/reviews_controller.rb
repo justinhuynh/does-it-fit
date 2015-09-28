@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :require_permission, only: [:edit, :update]
+  before_action :require_permission, only: [:edit, :update, :destroy]
 
   def create
     @user = current_user
@@ -33,6 +33,13 @@ class ReviewsController < ApplicationController
       flash[:warning] = @review.errors.full_messages.join(', ')
       render :edit
     end
+  end
+
+  def destroy
+    @product = Product.find(params[:product_id])
+    Review.find(params[:id]).destroy
+    flash[:success] = 'Review Deleted'
+    redirect_to product_path(@product)
   end
 
   protected

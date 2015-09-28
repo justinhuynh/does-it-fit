@@ -44,5 +44,6 @@ Brand Name: <%= @product.brand.name %>
     <p>
   <% if current_user == review.user %>
     <%= link_to 'Edit Review', [:edit, @product, review] %>
-    <% end %>
+    <%= link_to "Delete Review", [@product, review], method: :delete %>
+  <% end %>
 <% end %>
