@@ -59,7 +59,7 @@ feature 'user updates a review', %{
     scenario 'user can only see the edit link to their review' do
       sign_in(user_trying_to_edit)
       visit product_path(product)
-      page.should_not have_selector(:link_or_button, 'Edit Review')
+      expect(page).to_not have_selector(:link_or_button, 'Edit Review')
     end
 
     scenario 'user can only edit their own review' do
