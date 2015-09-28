@@ -13,19 +13,16 @@ feature 'user updates a review', %{
 } do
     context "user's email is test@gmail.com" do
       let!(:user) { FactoryGirl.create(:user, email: 'test@gmail.com') }
-      let!(:edit_review) { FactoryGirl.create(:edit_review) }
-      let!(:review) { FactoryGirl.create(:review, user_id: user.id, product_id: 1) }
-      let!(:product) do
-        FactoryGirl.create(:product, id: 1)
-      end
+      let!(:product) { FactoryGirl.create(:product_with_reviews) }
+
       scenario 'user successfully updates review' do
         sign_in(user)
         visit product_path(product)
         first(:link, "Edit Review").click
 
-        fill_in 'Title', with: edit_review.title
-        fill_in 'Body', with: edit_review.body
-        fill_in 'Product fit', with: edit_review.product_fit
+        fill_in 'Title', with: 'this is a title'
+        fill_in 'Body', with: 'this is a review'
+        fill_in 'Product fit', with: 1
         click_button 'Update Review'
         expect(page).to have_content('review updated successfully!')
       end
@@ -51,7 +48,6 @@ feature 'user updates a review', %{
   context "user's email does not match the any review posters email" do
     let!(:user_poster) { FactoryGirl.create(:user) }
     let!(:user_trying_to_edit) { FactoryGirl.create(:user, email: 'test@gmail.com') }
-    let!(:edit_review) { FactoryGirl.create(:edit_review) }
     let!(:product) do
       FactoryGirl.create(:product, id: 1)
     end

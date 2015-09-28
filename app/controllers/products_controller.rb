@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     @products = Product.all
   end
 
   def show
     @product = Product.find(params[:id])
+    @reviews = @product.reviews
     @review = Review.new
   end
 
@@ -39,14 +42,9 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    if current_user
-      Product.find(params[:id]).destroy
-      flash[:success] = 'Product Deleted'
-      redirect_to products_path
-    else
-      flash[:warning] = 'You must be signed in.'
-      redirect_to products_path
-    end
+    Product.find(params[:id]).destroy
+    flash[:success] = 'Product Deleted'
+    redirect_to products_path
   end
 
   protected

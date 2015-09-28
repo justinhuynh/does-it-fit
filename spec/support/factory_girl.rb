@@ -7,42 +7,38 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :category do
+    sequence(:name) { |n| "#{n} Pants" }
+  end
+
+  factory :brand do
+    sequence(:name) { |n| "#{n} Hugo" }
+  end
+
+  factory :review do
+    sequence(:title) { |n| "This is awesome #{n}" }
+    body 'Fits my body so nicely'
+    product_fit 5
+    user
+    product
+  end
+
   factory :product do
-    title 'Albert snow shoes'
-    brand_id 1
-    category_id 1
+    sequence(:title) { |n| "#{n} Albert snow shoes" }
+    brand
+    category
     image_url 'http://www.cg.cfpsa.ca/cg-pc
     /Moncton/EN/Rentals/Equipment/PublishingImages/rental%20snow%20shoes.jpg'
     vendor_url 'www.amazon.com'
     description 'great shoes for the family in the snow!'
-  end
 
-  factory :category do
-    name 'Pants'
+    factory :product_with_reviews do
+      after(:create) do |product|
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+      end
+    end
   end
-
-  factory :brand do
-    name 'Hugo'
-  end
-
-  factory :review do
-    title 'This is awesome'
-    body 'Fits my body so nicely'
-    product_fit 7
-    user_id 1
-    product_id 1
-  end
-
-  factory :edit_review, :class => 'Review' do
-    title 'Review is changed!'
-    body 'I had to change my review'
-    product_fit 4
-    user_id 1
-    product_id 1
-  end
-
-  factory :current_user, :class => 'User' do
-    user current_user
-  end
-
 end
