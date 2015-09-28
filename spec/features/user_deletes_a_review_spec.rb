@@ -23,7 +23,7 @@ feature 'deletes review', %{
     visit product_path(product)
     click_link 'Delete Review'
     expect(page).to have_content('Review Deleted')
-  #   expect(page).to have_no_content(review.title)
+    expect(page).to have_content('Deleted!')
   end
   #
   # scenario 'Non-user clicks delete review' do
