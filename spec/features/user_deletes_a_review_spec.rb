@@ -14,13 +14,13 @@ feature 'deletes review', %{
   let!(:user) { FactoryGirl.create(:user, id: 1, email: 'test@gmail.com') }
   let!(:product) { FactoryGirl.create(:product_with_reviews) }
   #
-  scenario 'Logged in user deletes review' do
-    sign_in(user)
-    visit product_path(product)
-    click_link 'Delete Review'
-    expect(page).to have_content('Review Deleted')
-    expect(page).to have_content('Deleted!')
-  end
+  # scenario 'Logged in user deletes review' do
+  #   sign_in(user)
+  #   visit product_path(product)
+  #   click_link 'Delete Review'
+  #   expect(page).to have_content('Review Deleted')
+  #   expect(page).to have_content('Deleted!')
+  # end
   #
   # scenario 'Non-user clicks delete review' do
   #   visit review_path(review)
