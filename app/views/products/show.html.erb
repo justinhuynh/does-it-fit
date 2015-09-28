@@ -24,8 +24,17 @@
           <h4>
             Review #<%= count %>: <%= review.title %>
           </h4>
-          <p>Product Fit: <%= review.product_fit %></p>
-          <p><%= review.body %></p>
+          Submitted by: <%= review.user %>
+            <br>
+          Title: <%= review.title %>
+            <br>
+          Product Fit: <%= review.product_fit %>
+            <br>
+          Review: <%= review.body %>
+            <p>
+          <% if current_user == review.user %>
+            <%= link_to 'Edit Review', [:edit, @product, review] %>
+          <% end %>
           <div class="votes">
             <%= render 'votes/downvote', review: review, count: count %>
           </div>
