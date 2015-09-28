@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews, only: [:index, :new, :create]
   end
-
   resources :reviews, only: [] do
     resources :votes, only: [:create, :destroy]
   end
-  
   resources :categories, only: [:index]
 end
