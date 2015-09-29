@@ -1,3 +1,17 @@
+
+<li class="has-form">
+  <form id="search-form" action="/products" accept-charset="UTF-8" method="get">
+    <div class="row collapse">
+      <input name="utf8" type="hidden" value="✓">
+      <div class="large-8 small-9 columns">
+        <input type="text" name="search" id="search" placeholder="Search Products">
+      </div>
+      <div class="large-4 small-3 columns">
+        <input type="submit" name="commit" value="Search" class="alert button expand">
+      </div>
+    </div>
+  </form>
+</li>
 <li><%= link_to 'Products', products_path %></li>
 
 <%- if current_user  -%>
