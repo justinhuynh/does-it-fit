@@ -10,17 +10,17 @@ $(".vote").on("click", function(event) {
     dataType: "json"
   });
   request.success(function(data) {
-    $review = $("#review"+reviewId);
-    $upcount = $review.find('.up-count');
-    $downcount = $review.find('.down-count');
-    $message = $review.find('.ajax-message');
-    $upcount.text(data['up']);
-    $downcount.text(data['down']);
-    $message.text("Thanks for your vote");
+    var review = $("#review"+reviewId);
+    var upcount = review.find('.up-count');
+    var downcount = review.find('.down-count');
+    var message = review.find('.ajax-message');
+    upcount.text(data['up']);
+    downcount.text(data['down']);
+    message.text("Thanks for your vote");
   });
   request.error(function() {
-    $review=$('#review'+reviewId);
-    $message = $review.find('.ajax-message');
-    $message.text("You must sign in to vote");
+    var review = $('#review'+reviewId);
+    var message = review.find('.ajax-message');
+    message.text("You must sign in to vote");
   });
 });
