@@ -5,7 +5,7 @@ $(".vote").on("click", function(event) {
   var helpful = $this.data("helpful");
   var request = $.ajax({
     method: "POST",
-    url: ('/reviews/' + reviewId + '/votes'),
+    url: ("/reviews/" + reviewId + "/votes"),
     data: { vote: { helpful: helpful}, review_id: reviewId  },
     dataType: "json"
   });
