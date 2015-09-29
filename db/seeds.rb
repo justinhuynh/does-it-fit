@@ -3,6 +3,7 @@ Category.destroy_all
 Product.destroy_all
 Review.destroy_all
 User.destroy_all
+Vote.destroy_all
 
 User.create(email: 'EricJZell@gmail.com', password: '12345678')
 
@@ -37,7 +38,7 @@ end
 end
 
 Product.all.each do |product|
-  rand(5).times do
+  rand(10).times do
     Review.create(
       title: Faker::App.name,
       body: Faker::Lorem.sentences(3).join(' '),
