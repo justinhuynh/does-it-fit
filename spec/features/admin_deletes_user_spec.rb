@@ -6,21 +6,22 @@ feature 'admin deletes product', %{
   So that I can remove unwanted users or inactive accounts
 
   Acceptance Criteria:
-  - [ ] I must be signed in as an admin
-  - [ ] I must
-  - [ ] My information must be deleted from the database
-  - [ ] I must be notified if my update was successful or unsuccessful.
+  - [X] I must be signed in as an admin
+  - [X] The user I choose to delete must be deleted from the database
+  - [X] I must be notified that the deletion was successful
+  - [X] I will be redirected to the list of users
 } do
+  let!(:user_1) { FactoryGirl.create(:user) }
+  let!(:user_2) { FactoryGirl.create(:user) }
+  let!(:admin) { FactoryGirl.create(:admin) }
 
-  # scenario 'Logged in user clicks delete account' do
-    # user = FactoryGirl.create(:user)
-    # visit new_user_session_path
-    # fill_in 'Email', with: user.email
-    # fill_in 'Password', with: user.password
-    # click_button 'Log in'
-    # click_link 'Edit Your User Profile'
-    # click_button 'Cancel my account'
-    # expect(page).to have_content('Bye!')
-    # expect(User.find_by(email: user.email)).to be_nil
-  # end
+  scenario 'authenticated admin clicks delete account' do
+    sign_in(admin)
+    visit users_path
+
+    first(:link, "Delete User").click
+    expect(page).to have_content("User was successfully deleted")
+    expect(page).to_not have_content(user_1.email)
+    expect(page).to have_content(user_2.email)
+  end
 end

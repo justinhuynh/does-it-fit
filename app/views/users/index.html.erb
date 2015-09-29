@@ -2,7 +2,7 @@
 <ul>
   <% @users.each do |user| %>
     <li>
-      <%= user.email %> <%= link_to 'Delete User', registration_path(user), method: :delete %>
+      <%= user.email %> <%= link_to 'Delete User', user, method: :delete %>
     </li>
   <% end %>
 </ul>
