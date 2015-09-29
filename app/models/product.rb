@@ -9,7 +9,6 @@ class Product < ActiveRecord::Base
   validates :category_id, numericality: { only_integer: true }
   validates :average_fit, presence: true
 
-
   def self.search(search)
     where('title ILIKE ?', "%#{search}%")
   end
