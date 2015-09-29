@@ -10,6 +10,10 @@ gem 'jquery-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails'
+gem 'fog'
+gem 'fog-aws'
+gem 'dotenv-rails'
+gem 'figaro'
 
 group :development, :test do
   gem 'pry-rails'
@@ -29,4 +33,8 @@ end
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :development, :test, :production do
+  gem 'carrierwave'
 end
