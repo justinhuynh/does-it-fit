@@ -14,8 +14,8 @@ $(".vote").on("click", function(event) {
     var upcount = review.find(".up-count");
     var downcount = review.find(".down-count");
     var message = review.find(".ajax-message");
-    upcount.text(data["up"]);
-    downcount.text(data["down"]);
+    upcount.text(data.up);
+    downcount.text(data.down);
     message.text("Thanks for your vote");
   });
   request.error(function() {
