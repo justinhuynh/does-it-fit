@@ -19,7 +19,7 @@
     <ul>
       <% count ||= 0 %>
       <% @reviews.each do |review| %>
-        <li class="review" id="<%=review.id%>">
+        <li class="review" id="review<%=review.id%>">
           <% count += 1 %>
           <h4>
             Review #<%= count %>: <%= review.title %>
@@ -36,13 +36,14 @@
             <%= link_to 'Edit Review', [:edit, @product, review] %>
           <% end %>
           <div class="votes">
-            <%= link_to image_tag("down.png", class: "down", data: { helpful: false, review_id: review.id }),"#" %>
+            <%= link_to image_tag("down.png", class: "vote down", data: { helpful: false, review_id: review.id }),"#" %>
             <span class="down-count"><%= review.thumbs_down %></span>
           </div>
           <div class="votes">
-            <%= link_to image_tag("up.png", class: "up", data: { helpful: true, review_id: review.id }),"#" %>
+            <%= link_to image_tag("up.png", class: "vote up", data: { helpful: true, review_id: review.id }),"#" %>
             <span class="up-count"><%= review.thumbs_up %></span>
           </div>
+          <p class="ajax-message"></p>
         </li>
       <% end %>
     </ul>
