@@ -10,7 +10,7 @@ $(".vote").on("click", function(event) {
     dataType: "json"
   });
   request.success(function(data) {
-    $review=$('#review'+reviewId);
+    $review = $("#review"+reviewId);
     $upcount = $review.find('.up-count');
     $downcount = $review.find('.down-count');
     $message = $review.find('.ajax-message');
