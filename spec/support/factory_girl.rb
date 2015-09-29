@@ -35,6 +35,7 @@ FactoryGirl.define do
     image_url 'http://www.cg.cfpsa.ca/cg-pc
     /Moncton/EN/Rentals/Equipment/PublishingImages/rental%20snow%20shoes.jpg'
     vendor_url 'www.amazon.com'
+    user
     description 'great shoes for the family in the snow!'
 
     factory :product_with_reviews do

@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
 
   def require_permission
     @review = Review.find(params[:id])
-    if current_user != @review.user
+    if (current_user != @review.user) && !current_user.admin?
       flash[:error] = "You can't someone elses review!"
       redirect_to root_path
     end

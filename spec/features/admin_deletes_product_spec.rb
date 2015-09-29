@@ -6,20 +6,19 @@ feature 'admin deletes product', %{
   So that I can remove unwanted products from the site
 
   Acceptance Criteria:
-  - [ ] I must be signed in as an admin
-  - [ ] The product must be deleted from the database
-  - [ ] I must be notified that my deletion was successful
+  - [X] I must be signed in as an admin
+  - [X] The product must be deleted from the database
+  - [X] I must be notified that my deletion was successful
 } do
+  let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:product) { FactoryGirl.create(:product) }
 
-  # scenario 'Logged in user clicks delete account' do
-  #   # user = FactoryGirl.create(:user)
-  #   # visit new_user_session_path
-  #   # fill_in 'Email', with: user.email
-  #   # fill_in 'Password', with: user.password
-  #   # click_button 'Log in'
-  #   # click_link 'Edit Your User Profile'
-  #   # click_button 'Cancel my account'
-  #   # expect(page).to have_content('Bye!')
-  #   # expect(User.find_by(email: user.email)).to be_nil
-  # end
+  scenario 'admin deletes product' do
+    sign_in(admin)
+    visit product_path(product)
+    click_link 'Delete Product'
+    expect(page).to have_content('Product Deleted')
+    expect(page).to have_no_content(product.title)
+    expect{ visit product_path(product) }.to raise_error(ActiveRecord::RecordNotFound)
+  end
 end
