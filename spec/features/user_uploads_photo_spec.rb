@@ -15,13 +15,12 @@ feature 'user uploads a photo to their profile', %{
       fill_in 'Email', with: 'carrierwave@yahoo.com'
       fill_in 'Password', with: 'testtest'
       fill_in 'Password confirmation', with: 'testtest'
-      attach_file "Profile Photo", "#{Rails.root}/spec/support/images/example_photo.jpg"
-      save_and_open_page
+      root_photo = "#{Rails.root}/spec/support/images/example_photo.jpg"
+      attach_file "Profile Photo", root_photo
       click_on "Sign up"
       expect(page).to have_content("You have signed up successfully.")
       visit edit_user_registration_path
       user = User.last
-      save_and_open_page
       expect(page).to have_content("Password confirmation")
       expect(page).to have_css("img[src*='example_photo.jpg']")
       expect(user.profile_photo.file.filename).to eq("example_photo.jpg")
