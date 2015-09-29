@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 feature 'user views list of products on products page', %{
   As an authenticated user
