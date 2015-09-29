@@ -12,7 +12,7 @@ feature 'user updates a product', %{
         product page on success
 } do
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:product) { FactoryGirl.create(:product) }
+  let!(:product) { FactoryGirl.create(:product, user: user) }
 
   scenario 'user successfully updates product' do
     sign_in(user)

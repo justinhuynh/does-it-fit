@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :require_permission, only: [:edit, :update, :destroy]
 
   def index
     if params[:search]
@@ -23,6 +24,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user = current_user
     if @product.save
       flash[:success] = 'Product Successfully Added'
       redirect_to '/products'
@@ -59,5 +61,13 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :title, :brand_id, :category_id, :description
     )
+  end
+
+  def require_permission
+    @product = Product.find(params[:id])
+    if (current_user != @product.user) && !current_user.admin?
+      flash[:error] = "You cannot modify another user\'s product"
+      redirect_to @product
+    end
   end
 end

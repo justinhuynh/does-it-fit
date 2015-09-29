@@ -32,7 +32,7 @@
             <br>
           Review: <%= review.body %>
             <p>
-          <% if current_user == review.user %>
+          <% if (current_user == review.user) || current_user.try(:admin?) %>
             <%= link_to 'Edit Review', [:edit, @product, review] %>
             <%= link_to "Delete Review", [@product, review], method: :delete %>
           <% end %>

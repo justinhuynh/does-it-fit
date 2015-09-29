@@ -6,7 +6,7 @@ feature 'user adds new product', %{
   So that so that people can review it
 
   Acceptance Criteria:
-  - [x] I must be logged in
+  - [x]  I must be logged in
   - [x]  I must provide title, brand, and category
   - [x]  I must recieve an error message for invalid form
   - [x]  I must get a success message and be brougt to the home page on success

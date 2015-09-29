@@ -32,7 +32,8 @@ end
     brand: Brand.all.sample,
     category: Category.all.sample,
     average_fit: [*(1..10)].sample,
-    description: Faker::Lorem.sentences(5).join(' ')
+    description: Faker::Lorem.sentences(5).join(' '),
+    user: User.all.sample
   )
 end
 

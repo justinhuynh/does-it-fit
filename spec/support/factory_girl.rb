@@ -2,9 +2,14 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :user do
-    sequence(:email) {|n| "user#{n}@example.com" }
+    sequence(:email) { |n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
+
+    factory :admin do
+      sequence(:email) { |n| "admin#{n}@example.com" }
+      user_type "admin"
+    end
   end
 
   factory :category do
@@ -30,6 +35,7 @@ FactoryGirl.define do
     image_url 'http://www.cg.cfpsa.ca/cg-pc
     /Moncton/EN/Rentals/Equipment/PublishingImages/rental%20snow%20shoes.jpg'
     vendor_url 'www.amazon.com'
+    user
     description 'great shoes for the family in the snow!'
 
     factory :product_with_reviews do
