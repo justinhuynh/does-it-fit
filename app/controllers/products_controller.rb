@@ -2,7 +2,12 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    @products = Product.all
+    if params[:search]
+      @products = Product.search(params[:search])
+      flash[:notice] = 'Your search query went through!'
+    else
+      @products = Product.all
+    end
   end
 
   def show
