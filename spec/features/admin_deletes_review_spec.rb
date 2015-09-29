@@ -16,7 +16,7 @@ feature 'admin deletes review', %{
   let!(:review_1) { FactoryGirl.create(:review, user: user, product: product) }
   let!(:review_2) { FactoryGirl.create(:review, user: user, product: product) }
 
-  scenario 'admin deletes product' do
+  scenario 'admin deletes review' do
     sign_in(admin)
     visit product_path(product)
     first(:link, "Delete Review").click

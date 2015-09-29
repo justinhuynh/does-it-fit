@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'admin deletes product', %{
+feature 'admin deletes user account', %{
   As an authenticated admin
   I want to delete a user account
   So that I can remove unwanted users or inactive accounts
