@@ -19,6 +19,8 @@ feature 'admin deletes product', %{
     click_link 'Delete Product'
     expect(page).to have_content('Product Deleted')
     expect(page).to have_no_content(product.title)
-    expect{ visit product_path(product) }.to raise_error(ActiveRecord::RecordNotFound)
+    expect {
+      visit product_path(product)
+    }.to raise_error(ActiveRecord::RecordNotFound)
   end
 end
