@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   def index
     if params[:search]
       @products = Product.search(params[:search])
-
+      flash[:notice] = 'Your search query went through!'
     else
       @products = Product.all
     end
