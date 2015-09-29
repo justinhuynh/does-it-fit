@@ -11,19 +11,18 @@ feature 'user updates a review', %{
   - []  I must get a success message and be brougt to the
         product page on success
 } do
-  context "user's email is test@gmail.com" do
+  context "user's email is test@gmail.com, " do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:product) { FactoryGirl.create(:product) }
     let!(:review) { FactoryGirl.create(:review, user: user, product: product) }
 
-    scenario 'user successfully updates review' do
+    scenario 'user successfully updates review', js: true do
       sign_in(user)
       visit product_path(product)
       first(:link, "Edit Review").click
 
       fill_in 'Title', with: 'this is a title'
       fill_in 'Body', with: 'this is a review'
-      fill_in 'Product fit', with: 1
       click_button 'Update Review'
       expect(page).to have_content('review updated successfully!')
     end
@@ -34,19 +33,15 @@ feature 'user updates a review', %{
       first(:link, "Edit Review").click
       fill_in 'Title', with: ''
       fill_in 'Body', with: ''
-      fill_in 'Product fit', with: ''
       click_button 'Update Review'
 
       expect(page).to_not have_content('review updated successfully!')
       expect(page).to have_content('Title can\'t be blank')
       expect(page).to have_content('Body can\'t be blank')
-      expect(page).to have_content('Product fit can\'t be blank')
-      expect(page).to have_content('Product fit is not a number')
-      expect(page).to have_content('Product fit is not included in the list')
     end
   end
 
-  context "user's email does not match the any review posters email" do
+  context "user's email does not match the any review posters email, " do
     let!(:user_poster) { FactoryGirl.create(:user) }
     let!(:user_trying_to_edit) do
       FactoryGirl.create(:user, email: 'test@gmail.com')
