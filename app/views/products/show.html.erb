@@ -1,29 +1,59 @@
-<h4>This is the product details page</h4>
-Category: <%= @product.category %>
-  <br>
-Product: <%= @product.title %>
-  <br>
-Description: <%= @product.description %>
-  <br>
-Brand Name: <%= @product.brand %>
-<p>
-  <%= link_to 'Go Back', products_path %>
-</p>
-<p>
-  <%= link_to 'Edit Product Info', edit_product_path(@product.id) %>
-</p>
-<p>
-  <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
-</p>
+<div class = "row product-show">
+  <div class="large-12 large-centered columns">
+    <h2>This is the product details page</h2>
+    <p>Category: <%= @product.category.name %></p>
+    <p>Product: <%= @product.title %></p>
+    <p>Description: <%= @product.description %></p>
+    <p>Brand Name: <%= @product.brand.name %></p>
+    <div class "inline-list">
+      <%= link_to 'Go Back', products_path %> |
+      <%= link_to 'Edit Product Info', edit_product_path(@product.id) %> |
+      <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
+    </div>
+  </div>
+</div>
 
-<h4>Check out these reviews!</h4>
-<% @product.reviews.each do |review| %>
-  <% count ||= 0 %>
-  <% count += 1 %>
-  Review #<%= count %>
-    <br>
-  Title: <%= review.title %>
-    <br>
-  Review: <%= review.body %>
-    <p>
-<% end %>
+<div class="row">
+  <div class="large-12 large-centered columns">
+    <h3 class="product-show">Check out these reviews!</h3>
+    <ul>
+      <% count ||= 0 %>
+      <% @reviews.each do |review| %>
+        <li class="review" id="review<%=review.id%>">
+          <% count += 1 %>
+          <h4>
+          Review #<%= count %>: <%= review.title %>
+          </h4>
+          Submitted by: <%= review.user %>
+            <br>
+          Title: <%= review.title %>
+            <br>
+          Product Fit: <%= review.product_fit %>
+            <br>
+          Review: <%= review.body %>
+            <p>
+          <% if (current_user == review.user) || current_user.try(:admin?) %>
+            <%= link_to 'Edit Review', [:edit, @product, review] %>
+            <%= link_to "Delete Review", [@product, review], method: :delete %>
+          <% end %>
+          <div class="votes">
+            <%= link_to image_tag("down.png", class: "vote down", data: { helpful: false, review_id: review.id }),"#" %>
+            <span class="down-count"><%= review.thumbs_down %></span>
+          </div>
+          <div class="votes">
+            <%= link_to image_tag("up.png", class: "vote up", data: { helpful: true, review_id: review.id }),"#" %>
+            <span class="up-count"><%= review.thumbs_up %></span>
+          </div>
+          <p class="ajax-message"></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row review-form">
+  <div class="large-12 large-centered columns">
+    <h3>Add a review!</h3>
+    <%= render 'reviews/form' %>
+  </div>
+</div>

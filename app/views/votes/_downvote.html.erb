@@ -1,0 +1,5 @@
+<%= form_for [review, @vote] do |f| %>
+  <%= f.hidden_field "helpful", value: false %>
+  <%= image_submit_tag "down.png", class: "down#{count}", data: { review_id: review.id, helpful: false } %>
+  <span id="down_count_<%= count %>"><%= review.thumbs_down %></span>
+<% end %>

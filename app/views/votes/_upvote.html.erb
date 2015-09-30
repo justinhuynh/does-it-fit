@@ -1,0 +1,5 @@
+<%= form_for [review, @vote], remote: true do |f| %>
+  <%= f.hidden_field "helpful", value: true %>
+  <%= image_submit_tag "up.png", class: "up up#{count}", data: { helpful: true, review_id: review.id } %>
+  <span id="up_count_<%= count %>"><%= review.thumbs_up %></span>
+<% end %>

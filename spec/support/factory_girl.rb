@@ -2,35 +2,49 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :user do
-    sequence(:email) {|n| "user#{n}@example.com" }
+    sequence(:email) { |n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
-  end
 
-  factory :product do
-    title 'Albert snow shoes'
-    brand_id 1
-    category_id 1
-    image_url 'http://www.cg.cfpsa.ca/cg-pc
-    /Moncton/EN/Rentals/Equipment/PublishingImages/rental%20snow%20shoes.jpg'
-    vendor_url 'www.amazon.com'
-    description 'great shoes for the family in the snow!'
+    factory :admin do
+      sequence(:email) { |n| "admin#{n}@example.com" }
+      user_type "admin"
+    end
   end
 
   factory :category do
-    name 'Pants'
+    sequence(:name) { |n| "#{n} Pants" }
   end
 
   factory :brand do
-    name 'Hugo'
+    sequence(:name) { |n| "#{n} Hugo" }
   end
 
   factory :review do
-    title 'This is awesome'
+    sequence(:title) { |n| "This is awesome #{n}" }
     body 'Fits my body so nicely'
-    product_fit 7
-    user_id 1
-    product_id 1
+    product_fit 5
+    user
+    product
   end
 
+  factory :product do
+    sequence(:title) { |n| "#{n} Albert snow shoes" }
+    brand
+    category
+    image_url 'http://www.cg.cfpsa.ca/cg-pc
+    /Moncton/EN/Rentals/Equipment/PublishingImages/rental%20snow%20shoes.jpg'
+    vendor_url 'www.amazon.com'
+    user
+    description 'great shoes for the family in the snow!'
+
+    factory :product_with_reviews do
+      after(:create) do |product|
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+        FactoryGirl.create(:review, product: product)
+      end
+    end
+  end
 end

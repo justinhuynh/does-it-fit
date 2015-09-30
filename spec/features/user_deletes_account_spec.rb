@@ -23,5 +23,4 @@ feature 'deletes account', %{
     expect(page).to have_content('Bye!')
     expect(User.find_by(email: user.email)).to be_nil
   end
-
 end
