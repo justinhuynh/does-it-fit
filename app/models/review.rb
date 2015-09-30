@@ -19,10 +19,3 @@ class Review < ActiveRecord::Base
     votes.where(helpful: false).length
   end
 end
-
-
-def square_of_2?(num)
-  i = 0
-  until 2^i > num
-    (1..i).each do | thing |
-      

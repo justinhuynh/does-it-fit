@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def admin?
+    @user_type = user_type
     user_type == "admin"
   end
 end
