@@ -15,7 +15,7 @@ feature 'user views a product\'s details', %{
 
   scenario 'see product details and reviews for that product' do
     product = FactoryGirl.create(:product_with_reviews)
-
+    product.reload
     visit product_path(product)
     expect(page).to have_content(product.title)
     expect(page).to have_content(product.brand.name)
@@ -24,7 +24,7 @@ feature 'user views a product\'s details', %{
 
     expect(page).to have_content(product.reviews[0].title)
     expect(page).to have_content(product.reviews[0].body)
-    binding.pry
+    
     expect(page).to have_content(product.reviews[1].title)
     expect(page).to have_content(product.reviews[1].body)
   end

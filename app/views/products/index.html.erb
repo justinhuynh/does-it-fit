@@ -1,12 +1,6 @@
-
 <%= @current_user  %>
 <h4>This is the product page</h4>
 <h5> Search for Products Below: </h5>
-
-<%= form_tag(products_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
-  <%= submit_tag "Search" %>
-<% end %>
 
 <% if @products.empty? %>
   <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
