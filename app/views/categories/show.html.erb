@@ -9,8 +9,9 @@
     <li>
       <%= link_to product_path(product) do %>
         <img src="https://i.s-jcrew.com/is/image/jcrew/94058_KE3981_m?$pdp_fs418$">
-        <center><%= product.title %><% end %></center>
-        <center>by <%= product.brand.name %></center>
+        <center><%= product.title %></center>
+      <% end %>
+      <center>by <%= product.brand.name %></center>
     </li>
   <% end %>
 </ul>

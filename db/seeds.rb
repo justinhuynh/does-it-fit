@@ -27,7 +27,7 @@ categories.each do |category|
   Category.create(name: category)
 end
 
-20.times do
+40.times do
   Product.create(
     title: Faker::Commerce.product_name,
     brand: Brand.all.sample,
