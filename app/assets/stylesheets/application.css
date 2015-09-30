@@ -75,3 +75,9 @@
   display: inline-block;
   margin: 0px 10px;
 }
+
+.product {
+  padding: 20px;
+  margin-top: 10px;
+  list-style: none;
+}

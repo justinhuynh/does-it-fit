@@ -21,10 +21,9 @@ feature 'user adds review of a product', %{
       visit product_path(product)
     end
 
-    scenario 'user successfully adds review to product' do
+    scenario 'user successfully adds review to product', js: true do
       fill_in 'Title', with: 'My Review'
       fill_in 'Body', with: 'This doesn\'t fit!'
-      fill_in 'Product fit', with: 3
       click_button 'Create Review'
       expect(page).to have_content('Review successfully added')
       expect(page).to have_content('My Review')
@@ -33,10 +32,8 @@ feature 'user adds review of a product', %{
     scenario 'user unsuccessfully adds review to product' do
       fill_in 'Title', with: ''
       fill_in 'Body', with: 'This doesn\'t fit!'
-      fill_in 'Product fit', with: 'asdf'
       click_button 'Create Review'
       expect(page).to have_content('Title can\'t be blank')
-      expect(page).to have_content('Product fit is not included in the list')
     end
   end
 
@@ -44,7 +41,6 @@ feature 'user adds review of a product', %{
     visit product_path(product)
     fill_in 'Title', with: 'My Review'
     fill_in 'Body', with: 'This doesn\'t fit!'
-    fill_in 'Product fit', with: 3
     click_button 'Create Review'
     expect(page).to_not have_content('Review successfully added')
     expect(page).to have_content('You need to sign in or
