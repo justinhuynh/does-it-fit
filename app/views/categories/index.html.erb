@@ -1,5 +1,6 @@
-<h4>this is the categories index</h4>
-
-<% @categories.each do |category| %>
-  <%= category.name %>
-<% end %>
+<h4>Categories</h4>
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to category.name, category %></li>
+  <% end %>
+</ul>
