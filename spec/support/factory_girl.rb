@@ -14,6 +14,12 @@ FactoryGirl.define do
 
   factory :category do
     sequence(:name) { |n| "#{n} Pants" }
+
+    factory :category_with_products do
+      after(:create) do |category|
+        create_list(:product, 20, category: category)
+      end
+    end
   end
 
   factory :brand do

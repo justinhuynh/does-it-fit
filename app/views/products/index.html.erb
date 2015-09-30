@@ -19,3 +19,5 @@
   <% end %>
 </ul>
 <%= link_to "Add New Product", new_product_path %>
+<%= paginate @products %>
+<%= page_entries_info @products %>
