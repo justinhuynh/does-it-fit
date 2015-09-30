@@ -1,10 +1,9 @@
-
 <%= @current_user  %>
 <% if @products.empty? %>
   <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
 <% end %>
 
-<h3>Product Index</h3>
+<h3>Products in <%= @category.name %></h3>
 <ul class="small-block-grid-3 medium-block-grid-4 large-block-grid-5">
   <% @products.each do |product| %>
     <li>

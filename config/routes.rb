@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :reviews, only: [] do
     resources :votes, only: [:create, :destroy]
   end
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :show]
 end
