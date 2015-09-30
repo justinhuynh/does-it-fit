@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     @product.user = current_user
     if @product.save
       flash[:success] = 'Product Successfully Added'
-      redirect_to '/products'
+      redirect_to products_path
     else
       flash[:warning] = @product.errors.full_messages.join(', ')
       render :new

@@ -12,9 +12,10 @@ feature 'user views a product\'s details', %{
         and description
   - []  I must see reviews for the product
 } do
-  let!(:product) { FactoryGirl.create(:product_with_reviews) }
 
   scenario 'see product details and reviews for that product' do
+    product = FactoryGirl.create(:product_with_reviews)
+    product.reload
     visit product_path(product)
     expect(page).to have_content(product.title)
     expect(page).to have_content(product.brand.name)

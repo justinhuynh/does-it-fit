@@ -17,6 +17,7 @@ gem 'fog'
 gem 'fog-aws'
 gem 'dotenv-rails'
 gem 'figaro'
+gem 'carrierwave'
 
 
 group :development, :test do
@@ -32,12 +33,10 @@ group :test do
   gem 'coveralls', require: false
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'test_after_commit'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
 end
 
 group :production do
   gem 'rails_12factor'
-end
-
-group :development, :test, :production do
-  gem 'carrierwave'
 end
