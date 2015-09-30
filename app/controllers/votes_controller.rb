@@ -2,23 +2,11 @@ class VotesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @user = current_user
     @review = Review.find(params[:review_id])
+    @vote = @review.votes.find_or_create_by(user: current_user)
+    @vote.update(vote_params)
     @product = @review.product
-    @vote = Vote.new(vote_params)
-    @vote.user = @user
-    @vote.review = @review
-    if @vote.save
-      flash[:notice] = 'Thanks for your vote'
-      redirect_to product_path(@product)
-    else
-      flash[:error] = @vote.errors.full_messages.join(' ')
-      redirect_to product_path(@product)
-    end
-  end
-
-  def update
-    @vote = Vote.find(params[:vote_id])
+    render json: { up: @review.thumbs_up, down: @review.thumbs_down }
   end
 
   protected

@@ -12,7 +12,11 @@ require File.join(File.dirname(__FILE__), 'support/sign_in')
 require File.join(File.dirname(__FILE__), 'support/database_cleaner')
 require 'database_cleaner'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 require 'pry'
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
