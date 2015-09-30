@@ -13,6 +13,11 @@ gem 'foundation-rails'
 gem 'pry-rails'
 gem 'faker'
 gem 'kaminari'
+gem 'fog'
+gem 'fog-aws'
+gem 'dotenv-rails'
+gem 'figaro'
+
 
 group :development, :test do
   gem 'rspec-rails'
@@ -31,4 +36,8 @@ end
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :development, :test, :production do
+  gem 'carrierwave'
 end
