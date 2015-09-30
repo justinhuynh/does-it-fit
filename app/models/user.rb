@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   def admin?
     user_type == "admin"
   end
