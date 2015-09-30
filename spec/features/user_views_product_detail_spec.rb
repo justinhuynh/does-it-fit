@@ -24,7 +24,7 @@ feature 'user views a product\'s details', %{
 
     expect(page).to have_content(product.reviews[0].title)
     expect(page).to have_content(product.reviews[0].body)
-    
+
     expect(page).to have_content(product.reviews[1].title)
     expect(page).to have_content(product.reviews[1].body)
   end
