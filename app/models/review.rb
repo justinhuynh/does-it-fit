@@ -2,6 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
   has_many :votes
+  after_commit :update_product_average_fit
 
   validates :title, presence: true
   validates :body, presence: true
@@ -17,5 +18,9 @@ class Review < ActiveRecord::Base
 
   def thumbs_down
     votes.where(helpful: false).length
+  end
+
+  def update_product_average_fit
+    product.update_average_fit
   end
 end

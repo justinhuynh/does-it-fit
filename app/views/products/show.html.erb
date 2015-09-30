@@ -5,6 +5,7 @@
     <p>Product: <%= @product.title %></p>
     <p>Description: <%= @product.description %></p>
     <p>Brand Name: <%= @product.brand.name %></p>
+    <p>Average Fit Rating: <%= @product.average_fit %> (<%= @product.average_fit_text %>)</p>
     <div class "inline-list">
       <%= link_to 'Go Back', products_path %> |
       <%= link_to 'Edit Product Info', edit_product_path(@product.id) %> |
