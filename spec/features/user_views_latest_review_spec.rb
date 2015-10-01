@@ -18,7 +18,6 @@ feature 'user views the latest review\'s product\'s details', %{
     product.reload
     visit root_path
     click_on 'Latest Review'
-    save_and_open_page
     expect(page).to have_content(Review.last.product.title)
     expect(page).to have_content(Review.last.product.description)
   end

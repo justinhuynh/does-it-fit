@@ -11,7 +11,7 @@ feature 'user signs in', %Q{
   - [√] User will be notified of errors if sign in is unsuccessful
 } do
   let!(:review) { FactoryGirl.create(:review) }
-  
+
   scenario 'specify valid credentials' do
     user = FactoryGirl.create(:user)
     visit new_user_session_path
