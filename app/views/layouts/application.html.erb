@@ -3,56 +3,39 @@
 <head>
   <title>DoesItFit</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">DoesItFit</a></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="right">
+  <div class="contain-to-grid">
+    <div class="row">
+      <div class="small-12 small-centered columns">
         <%= render 'layouts/top_bar' %>
-      </ul>
-      <ul class="left">
-        <li class="has-dropdown"><a href="#">Filter by:</a>
-          <ul class="dropdown">
-            <li><a href="/brands">Brands</a></li>
-            <li><a href="/categories">Categories</a></li>
-            <li><a href="/products">Products</a></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-  </nav>
-
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
+      </div>
     </div>
-  <%- end -%>
+  </div>
 
-  <%= yield %>
+  <%= render 'layouts/flash' %>
 
-  <%= javascript_include_tag 'application' %>
-  <%= yield :extra_footer %>
+  <div class="row">
+    <div class="small-12 small-centered columns">
+      <%= yield %>
+
+      <%= javascript_include_tag 'application' %>
+      <%= yield :extra_footer %>
+    </div>
+  </div>
 
   <div class="row">
     <div class="small-10 small-centered columns">
       <ul class="inline-list">
-        <li>About</li>
+        <li><%=link_to "Home", root_path %></li>
         <li> | </li>
-        <li>Categories</li>
+        <li><%= link_to "Categories", categories_path %></li>
         <li> | </li>
-        <li>Brands</li>
+        <li><%= link_to "Brands", brands_path %></li>
         <li> | </li>
-        <li>Investors</li>
-        <li> | </li>
-        <li>Product</li>
+        <li><%= link_to "Products", products_path %></li>
       </ul>
     </div>
   </div>

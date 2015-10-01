@@ -9,7 +9,7 @@
     <div class "inline-list">
       <%= link_to 'Go Back', products_path %> |
       <%= link_to 'Edit Product Info', edit_product_path(@product.id) %> |
-      <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
+      <%= link_to 'Delete Product', @product, method: :delete %>
     </div>
   </div>
 </div>
@@ -45,7 +45,13 @@
             <%= link_to image_tag("up.png", class: "vote up", data: { helpful: true, review_id: review.id }),"#" %>
             <span class="up-count"><%= review.thumbs_up %></span>
           </div>
-          <p class="ajax-message"></p>
+          <div class="ajax-message"></div>
+          <div class="initial-message">
+            <% if @vote = review.vote(current_user) %>
+              <%= @vote.message %>
+              <%= link_to("Delete Vote", "#", class: "delete-vote", data: { review_id: review.id, vote_id: @vote.id }) %>
+            <% end %>
+          </div>
         </li>
       <% end %>
     </ul>
