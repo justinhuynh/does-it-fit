@@ -19,12 +19,15 @@ feature 'user adds new product', %{
     sign_in(user)
     visit new_product_path
     fill_in 'Title', with: 'New Product Title'
+    fill_in 'Image url', with: 'http://singyourname.com/catalog/images/thing-running.jpg'
     select brand.name, from: 'Brand'
     select category.name, from: 'Category'
     fill_in 'Description', with: 'This is a description of the product'
     click_button 'Create Product'
     expect(page).to have_content('Product Successfully Added')
-
+    finder = user.products.last
+    visit product_path(finder)
+    expect(page).to have_xpath("//img[contains(@src,'thing-running.jpg')]")
   end
 
   scenario 'user unsuccessfully adds a product' do
