@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'sends a notification e-mail', %{
   As an authenticated user
-  I want to recieve an email when someone reviews one of my products
+  I =want to recieve an email when someone reviews one of my products
   So that I know what people are saying about it
 
   Acceptance Criteria:
@@ -10,8 +10,8 @@ feature 'sends a notification e-mail', %{
   - [] An email is sent to my user account email address
   - [] The email tells me which product was reviewed
 } do
-    ActionMailer::Base.deliveries.clear
-    scenario "review a product", js: true do
+  ActionMailer::Base.deliveries.clear
+  scenario "review a product", js: true do
     product = FactoryGirl.create(:product)
     user = FactoryGirl.create(:user)
 
@@ -22,7 +22,6 @@ feature 'sends a notification e-mail', %{
     fill_in "Title", with: "Total garbage."
     fill_in "Body", with: "Not great."
     click_button "Create Review"
-    save_and_open_page
     expect(page).to have_content("Total garbage.")
     expect(ActionMailer::Base.deliveries.count).to eq(1)
   end

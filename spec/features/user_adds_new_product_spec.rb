@@ -25,7 +25,6 @@ feature 'user adds new product', %{
     click_button 'Create Product'
     expect(page).to have_content('Product Successfully Added')
 
-
   end
 
   scenario 'user unsuccessfully adds a product' do
