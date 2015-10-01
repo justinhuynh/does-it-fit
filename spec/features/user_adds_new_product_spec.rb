@@ -24,6 +24,7 @@ feature 'user adds new product', %{
     fill_in 'Description', with: 'This is a description of the product'
     click_button 'Create Product'
     expect(page).to have_content('Product Successfully Added')
+
   end
 
   scenario 'user unsuccessfully adds a product' do
