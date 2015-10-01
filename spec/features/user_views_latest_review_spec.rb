@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'pry'
 
-feature 'user views the last review\'s product\'s details', %{
+feature 'user views the latest review\'s product\'s details', %{
   As an authenticated user
   I want to view the most recent review made to the web app
   So that I can learn more about it
