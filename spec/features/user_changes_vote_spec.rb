@@ -11,7 +11,9 @@ feature 'user votes on review', %{
 } do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:product) { FactoryGirl.create(:product_with_reviews) }
-  let!(:vote) { FactoryGirl.create(:vote, review: product.reviews[0], user: user) }
+  let!(:vote) do
+    FactoryGirl.create(:vote, review: product.reviews[0], user: user)
+  end
 
   scenario 'user downvotes a previously upvoted review', js: true do
     sign_in(user)

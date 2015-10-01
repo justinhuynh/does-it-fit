@@ -1,3 +1,13 @@
+var showDelete = function(newVoteId, newReviewId) {
+  var $deleteLink = $("<a />", {
+    class : "delete-vote",
+    href : "#",
+    text : "Delete Vote",
+    data : { voteId: newVoteId, reviewId: newReviewId }
+  });
+  return $deleteLink;
+};
+
 $(".vote").on("click", function(event) {
   event.preventDefault();
   var $this = $(this);
@@ -77,13 +87,3 @@ $(".ajax-message").on("click", "a.delete-vote", function(event) {
     message.text("Your vote has been deleted");
   });
 });
-
-var showDelete = function(newVoteId, newReviewId) {
-  var $deleteLink = $("<a />", {
-    class : "delete-vote",
-    href : "#",
-    text : "Delete Vote",
-    data : { voteId: newVoteId, reviewId: newReviewId }
-  });
-  return $deleteLink;
-}

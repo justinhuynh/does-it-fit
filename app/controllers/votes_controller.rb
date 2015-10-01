@@ -6,14 +6,21 @@ class VotesController < ApplicationController
     @review = Review.find(params[:review_id])
     @vote = @review.votes.find_or_create_by(user: current_user)
     @vote.update(vote_params)
-    render json: { up: @review.thumbs_up, down: @review.thumbs_down, voteId: @vote.id }
+    render json: {
+      up: @review.thumbs_up,
+      down: @review.thumbs_down,
+      voteId: @vote.id
+    }
   end
 
   def destroy
     @vote = Vote.find(params[:id])
     @review = @vote.review
     @vote.destroy
-    render json: { up: @review.thumbs_up, down: @review.thumbs_down }
+    render json: {
+      up: @review.thumbs_up,
+      down: @review.thumbs_down
+    }
   end
 
   protected

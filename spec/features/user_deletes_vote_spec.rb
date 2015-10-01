@@ -12,7 +12,9 @@ feature 'deletes vote', %{
 } do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:product) { FactoryGirl.create(:product_with_reviews) }
-  let!(:vote) { FactoryGirl.create(:vote, review: product.reviews[0], user: user) }
+  let!(:vote) do
+    FactoryGirl.create(:vote, review: product.reviews[0], user: user)
+  end
 
   scenario 'user deletes vote', js: true do
     sign_in(user)
