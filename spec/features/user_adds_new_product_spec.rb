@@ -27,8 +27,7 @@ feature 'user adds new product', %{
     expect(page).to have_content('Product Successfully Added')
     finder = user.products.last
     visit product_path(finder)
-    page.find('#product-image')['src'].should have_content 'thing-running.jpg'
-
+    expect(page).to have_xpath("//img[contains(@src,'thing-running.jpg')]")
   end
 
   scenario 'user unsuccessfully adds a product' do
