@@ -1,22 +1,40 @@
 <div class = "row product-show">
   <div class="large-12 large-centered columns">
-    <h2>This is the product details page</h2>
-    <p>Category: <%= @product.category.name %></p>
-    <p>Product: <%= @product.title %></p>
-    <p>Description: <%= @product.description %></p>
-    <p>Brand Name: <%= @product.brand.name %></p>
-    <p>Average Fit Rating: <%= @product.average_fit %> (<%= @product.average_fit_text %>)</p>
-    <div class "inline-list">
+    <center><h2>Product Details: <%= @product.title %></h2></center>
+    <table>
+      <tr>
+        <td width="20%">Category:</td><td width="25%"> <%= @product.category.name %></td>
+        <td></td>
+        <td rowspan="7" width="400"><img class="product-image" src="<%= @product.image_url %>"></td>
+      </tr>
+      <tr>
+        <td width="20%">Product:</td><td width="25%"><%= @product.title %></td>
+      </tr>
+      <tr>
+        <td width="20%">Description:</td><td width="25%"><%= @product.description %></td>
+      </tr>
+      <tr>
+        <td width="20%">Brand Name:</td><td width="25%"><%= @product.brand.name %></td>
+      </tr>
+      <tr>
+    <td width="20%">Average Fit Rating:</td><td width="25%"><%= @product.average_fit %> (<%= @product.average_fit_text %>)</td>
+  </tr>
+    <center><div class "inline-list">
       <%= link_to 'Go Back', products_path %> |
       <%= link_to 'Edit Product Info', edit_product_path(@product.id) %> |
       <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: 'Are you sure?'} %>
-    </div>
+    </div></center>
+    <p>
+      <p>
   </div>
 </div>
+</table>
 
 <div class="row">
   <div class="large-12 large-centered columns">
+    <% if @reviews.count != 0 %>
     <h3 class="product-show">Check out these reviews!</h3>
+    <% end %>
     <ul>
       <% count ||= 0 %>
       <% @reviews.each do |review| %>
@@ -54,7 +72,8 @@
 
 <div class="row review-form">
   <div class="large-12 large-centered columns">
-    <h3>Add a review!</h3>
+    <center><h3>Add a review below!</h3></center>
+    <p>
     <%= render 'reviews/form' %>
   </div>
 </div>
