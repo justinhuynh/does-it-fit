@@ -10,6 +10,7 @@ feature 'sends a notification e-mail', %{
   - [] An email is sent to my user account email address
   - [] The email tells me which product was reviewed
 } do
+  let!(:review) { FactoryGirl.create(:review) }
   ActionMailer::Base.deliveries.clear
   scenario "review a product", js: true do
     product = FactoryGirl.create(:product)

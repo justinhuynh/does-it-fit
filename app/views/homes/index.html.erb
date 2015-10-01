@@ -37,8 +37,10 @@
 
       <li>
         <div class="thumb">
-          <img src="https://i.s-jcrew.com/is/image/jcrew/60763_WW8415_m?$pdp_fs418$">
-          <div class="text">Latest Review</div>
+          <%= link_to product_path(Review.last.product) do %>
+            <img src="https://i.s-jcrew.com/is/image/jcrew/60763_WW8415_m?$pdp_fs418$">
+            <div class="text">Latest Review</div>
+          <% end %>
         </div>
       </li>
     </ul>

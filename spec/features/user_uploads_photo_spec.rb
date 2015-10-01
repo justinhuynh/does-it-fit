@@ -10,6 +10,7 @@ feature 'user uploads a photo to their profile', %{
   - []  I must see my uploaded photo in my profile
 } do
   context "user registers new account" do
+    let!(:review) { FactoryGirl.create(:review) }
     scenario "user uploads photo during registration" do
       visit new_user_registration_path
       fill_in 'Email', with: 'carrierwave@yahoo.com'

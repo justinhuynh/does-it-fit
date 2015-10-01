@@ -11,6 +11,7 @@ feature 'user updates info', %{
   - [X] I must provide unique information.
   - [X] I must be notified if my update was successful or unsuccessful.
 } do
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario 'Successfully update registration information' do
     user = FactoryGirl.create(:user)

@@ -12,6 +12,7 @@ feature 'admin deletes product', %{
 } do
   let!(:admin) { FactoryGirl.create(:admin) }
   let!(:product) { FactoryGirl.create(:product) }
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario 'admin deletes product' do
     sign_in(admin)

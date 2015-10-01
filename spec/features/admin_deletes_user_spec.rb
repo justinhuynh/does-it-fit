@@ -14,6 +14,7 @@ feature 'admin deletes user account', %{
   let!(:user_1) { FactoryGirl.create(:user) }
   let!(:user_2) { FactoryGirl.create(:user) }
   let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario 'authenticated admin clicks delete account' do
     sign_in(admin)

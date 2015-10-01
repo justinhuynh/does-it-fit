@@ -14,6 +14,7 @@ feature 'user adds new product', %{
   let!(:user) { FactoryGirl.create(:user) }
   let!(:brand) { FactoryGirl.create(:brand) }
   let!(:category) { FactoryGirl.create(:category) }
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario 'user successfully adds product' do
     sign_in(user)

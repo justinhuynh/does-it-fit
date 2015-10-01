@@ -13,6 +13,7 @@ feature 'admin views list of users', %{
   let!(:user_1) { FactoryGirl.create(:user) }
   let!(:user_2) { FactoryGirl.create(:user) }
   let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario 'admin views list of users' do
     sign_in(admin)
