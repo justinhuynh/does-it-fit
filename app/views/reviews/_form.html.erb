@@ -1,29 +1,30 @@
 <%= form_for [@product, @review] do |f| %>
+<label id="review_product_fit">
+  Product fit:
+  <span id="sliderOutput"></span>
+</label>
+<div class="row">
+  <div class="small-8 small-centered columns">
+    <h6>
+      <span class="left">runs small</span>
+      <span class="right">runs large</span>
+      <center>true to size</center>
+    </h6>
+  </div>
+</div>
+<div class="row">
+  <div class="small-8 small-centered columns">
+    <div class="range-slider" data-slider data-options="start: 0; end: 10; display_selector: #sliderOutput">
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
+      <span class="range-slider-active-segment"></span>
+      <input type="hidden" name="review[product_fit]" id="review_product_fit">
+    </div>
+  </div>
+</div>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :body %>
   <%= f.text_field :body %>
-  <label id="review_product_fit">
-    Product fit:
-    <span id="sliderOutput"></span>
-  </label>
-  <div class="row">
-    <div class="small-8 small-centered columns">
-      <h6>
-        <span class="left">runs small</span>
-        <span class="right">runs large</span>
-        <center>true to size</center>
-      </h6>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-8 small-centered columns">
-      <div class="range-slider" data-slider data-options="start: 0; end: 10; display_selector: #sliderOutput">
-        <span class="range-slider-handle" role="slider" tabindex="0"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden" name="review[product_fit]" id="review_product_fit">
-      </div>
-    </div>
-  </div>
+
   <%= f.submit class: "button radius" %>
 <% end %>
