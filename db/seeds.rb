@@ -45,7 +45,6 @@ urls = [
   'http://www.patagonia.com/tsimages/55920_ASHT.fpx?wid=750&hei=750&bgcolor=FFFFFF&ftr=6&cvt=jpeg,scans=progressive'
 ]
 
-
 count = 0
 titles.each do |title|
   Product.create(
@@ -83,8 +82,6 @@ titles.each do |title|
   )
   count +=1
 end
-
-
 
 # Shorts
 
