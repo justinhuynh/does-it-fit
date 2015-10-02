@@ -14,21 +14,16 @@ User.create(email: 'EricJZell@gmail.com', password: '12345678')
   )
 end
 
-# 20.times do
-#   Brand.create(name: Faker::Company.name)
-# end
-
 categories = [
   'Pants', 'Casual Shirts', 'Jackets',
   'Shorts', 'Swimwear'
 ]
 
-#'Dress Shirts', 'Shoes', 'Outerwear', 'Hats',
-#'Sweaters', 'Athletic Wear', 'Sporting Goods'
-
 categories.each do |category|
   Category.create(name: category)
 end
+
+#Seeding for Patagonia starts here 
 
 brand = Brand.create(name: 'Patagonia')
 
@@ -240,33 +235,6 @@ titles.each do |title|
   )
   count += 1
 end
-
-# # Swimwear
-#
-# category = Category.find_by(name: 'Swimwear')
-# titles = [
-#   "PATAGONIA WOMEN'S EIRON TANKINI",
-#   "PATAGONIA WOMEN'S R1® WETSUIT VEST",
-#   "PATAGONIA WOMEN'S WAVEFARER® BOARD SHORTS"
-# ]
-# urls = [
-#   'http://www.patagonia.com/tsimages/77215_BFSP.fpx?wid=750&hei=750&bgcolor=FFFFFF&ftr=6&cvt=jpeg,scans=progressive',
-#   'http://www.patagonia.com/tsimages/87446_IKP.fpx?wid=750&hei=750&bgcolor=FFFFFF&ftr=6&cvt=jpeg,scans=progressive',
-#   'http://www.patagonia.com/tsimages/76595_311.fpx?wid=750&hei=750&bgcolor=FFFFFF&ftr=6&cvt=jpeg,scans=progressive'
-# ]
-#
-# count = 0
-# titles.each do |title|
-#   Product.create(
-#     title: title,
-#     brand: brand,
-#     category: category,
-#     user: User.all.sample,
-#     image_url: urls[count]
-#   )
-#   count += 1
-# end
-#
 
 # #Jackets
 
