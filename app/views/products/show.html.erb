@@ -1,37 +1,60 @@
-<div class = "row product-show">
-  <div class="large-12 large-centered columns">
-    <center><h2>Product Details: <%= @product.title %></h2></center>
-    <table>
-      <tr>
-        <td width="20%">Category:</td><td width="25%"> <%= @product.category.name %></td>
-        <td></td>
-        <td rowspan="7" width="400"><img class="product-image" src="<%= @product.image_url %>"></td>
-      </tr>
-      <tr>
-        <td width="20%">Product:</td><td width="25%"><%= @product.title %></td>
-      </tr>
-      <tr>
-        <td width="20%">Description:</td><td width="25%"><%= @product.description %></td>
-      </tr>
-      <tr>
-        <td width="20%">Brand Name:</td><td width="25%"><%= @product.brand.name %></td>
-      </tr>
-      <tr>
-    <td width="20%">Average Fit Rating:</td><td width="25%"><%= @product.average_fit %> (<%= @product.average_fit_text %>)</td>
-  </tr>
-    <center><div class "inline-list">
-      <%= link_to 'Go Back', products_path %> |
-      <%= link_to 'Edit Product Info', edit_product_path(@product.id) %> |
-      <%= link_to 'Delete Product', @product, method: :delete %>
-    </div></center>
-    <p>
-      <p>
+<div class="row">
+  <div class="large-12 large-centered columns product-title">
+    <center><h2><%= @product.title %></h2></center>
+    <center>
+      <div class "inline-list">
+        <%= link_to 'Go Back', products_path %> |
+        <%= link_to 'Edit Product Info', edit_product_path(@product.id) %> |
+        <%= link_to 'Delete Product', @product, method: :delete %>
+      </div>
+    </center>
   </div>
 </div>
-</table>
 
 <div class="row">
-  <div class="large-12 large-centered columns">
+  <div class="small-6 columns review-form">
+    <div class="panel">
+      <img class="product-image" max-width="400" src="<%= @product.image_url %>">
+    </div>
+  </div>
+  <div class="small-6 columns review-form">
+    <div class="panel">
+      <h3>Add a review below!</h3>
+    <p>
+    <%= render 'reviews/form' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 small-centered columns">
+  <table>
+    <tr>
+      <td class="product-header">Category</td>
+      <td><%= @product.category.name %></td>
+    </tr>
+    <tr>
+      <td class="product-header">Product</td>
+      <td><%= @product.title %></td>
+    </tr>
+    <tr>
+      <td class="product-header">Description</td>
+      <td><%= @product.description %></td>
+    </tr>
+    <tr>
+      <td class="product-header">Brand Name</td>
+      <td><%= @product.brand.name %></td>
+    </tr>
+    <tr>
+      <td class="product-header">Average Fit Rating</td>
+      <td><%= @product.average_fit %> (<%= @product.average_fit_text %>)</td>
+    </tr>
+  </table>
+</div>
+</div>
+
+<div class="row">
+  <div class="large-12 large-centered columns product-reviews">
     <% if @reviews.count != 0 %>
     <h3 class="product-show">Check out these reviews!</h3>
     <% end %>
@@ -39,6 +62,7 @@
       <% count ||= 0 %>
       <% @reviews.each do |review| %>
         <li class="review" id="review<%=review.id%>">
+          <div class="panel">
           <% count += 1 %>
           <h4>
           Review #<%= count %>: <%= review.title %>
@@ -70,16 +94,9 @@
               <%= link_to("Delete Vote", "#", class: "delete-vote", data: { review_id: review.id, vote_id: @vote.id }) %>
             <% end %>
           </div>
+          </div>
         </li>
       <% end %>
     </ul>
-  </div>
-</div>
-
-<div class="row review-form">
-  <div class="large-12 large-centered columns">
-    <center><h3>Add a review below!</h3></center>
-    <p>
-    <%= render 'reviews/form' %>
   </div>
 </div>

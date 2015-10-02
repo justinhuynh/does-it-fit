@@ -60,11 +60,8 @@
 }
 
 .review {
-  padding: 20px;
-  margin-top: 10px;
   list-style: none;
-  border: 2px solid #BBB;
-  border-radius: 20px;
+  margin: 0px !important;
 }
 
 .review-form {
@@ -80,4 +77,14 @@
   padding: 20px;
   margin-top: 10px;
   list-style: none;
+}
+
+.product-header {
+  text-align: left;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.product-title {
+  margin: 18px;
 }
