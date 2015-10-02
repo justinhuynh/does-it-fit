@@ -81,3 +81,8 @@
   margin-top: 10px;
   list-style: none;
 }
+
+.fancy_font{
+	font-size: 18pt;
+  font-family: Brush Script MT;
+}
