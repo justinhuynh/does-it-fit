@@ -8,4 +8,9 @@ class Vote < ActiveRecord::Base
     scope: :review,
     message: "only one vote per user"
   }
+
+  def message
+    string = helpful ? "helpful" : "not helpful"
+    "You voted this review as #{string}."
+  end
 end

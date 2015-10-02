@@ -1,0 +1,16 @@
+<ul class="small-block-grid-3 medium-block-grid-4 large-block-grid-5">
+  <% @products.each do |product| %>
+    <li>
+      <%= link_to product_path(product) do %>
+        <img src="https://i.s-jcrew.com/is/image/jcrew/94058_KE3981_m?$pdp_fs418$">
+        <center><%= product.title %></center>
+      <% end %>
+      <center>by <%= link_to product.brand.name, brand_path(product.brand) %></center>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Add New Product", new_product_path %>
+<p>
+  <%= paginate @products %>
+  <%= page_entries_info @products %>
+</p>
