@@ -20,6 +20,11 @@
     padding: 0px;
  }
 
+.user-profile-photo {
+  max-width: 300px;
+  max-height: 300px;
+}
+
  .top-desc {
    border: 2px solid #666;
    padding: 10px;
