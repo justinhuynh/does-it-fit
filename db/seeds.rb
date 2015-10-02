@@ -5,8 +5,6 @@ Review.delete_all
 User.delete_all
 Vote.delete_all
 
-User.create(email: 'EricJZell@gmail.com', password: '12345678')
-
 10.times do
   User.create(
     email: Faker::Internet.email,
@@ -23,7 +21,7 @@ categories.each do |category|
   Category.create(name: category)
 end
 
-#Seeding for Patagonia starts here 
+#Seeding for Patagonia starts here
 
 brand = Brand.create(name: 'Patagonia')
 
