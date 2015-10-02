@@ -13,6 +13,8 @@ feature 'user views brands', %{
   scenario 'user navigates to brands page' do
     brand_1 = FactoryGirl.create(:brand)
     brand_2 = FactoryGirl.create(:brand)
+    product1 = FactoryGirl.create(:product, brand: brand_1)
+    product2 = FactoryGirl.create(:product, brand: brand_2)
     visit brands_path
     expect(page).to have_content(brand_1.name)
     expect(page).to have_content(brand_2.name)

@@ -3,7 +3,7 @@
   <% @brands.each do |brand| %>
     <li>
       <%= link_to brand_path(brand) do %>
-        <img src="https://i.s-jcrew.com/is/image/jcrew/94058_KE3981_m?$pdp_fs418$">
+        <img src="<%= brand.products.sample.image_url %>">
         <center><%= brand.name %></center>
       <% end %>
     </li>
