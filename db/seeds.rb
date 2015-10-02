@@ -54,7 +54,7 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
 
 # Casual Shirts
@@ -80,7 +80,7 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
 
 # Shorts
@@ -106,9 +106,8 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
-
 
 # Swimwear
 
@@ -133,9 +132,8 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
-
 
 #Jackets
 
@@ -160,7 +158,7 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
 
 #####SEEEDING FOR JACK WILLS BEGINS HERE ######################################3
@@ -181,7 +179,6 @@ urls = [
   'http://demandware.edgesuite.net/aati_prd/on/demandware.static/-/Sites-master_catalog/default/dwfc3db9d2/ProductImages/10000810301.jpg'
 ]
 
-
 count = 0
 titles.each do |title|
   Product.create(
@@ -191,9 +188,8 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
-
 
 #Casual Shirts
 
@@ -218,10 +214,8 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
-
-
 
 # Shorts
 
@@ -243,9 +237,8 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
-
 
 # # Swimwear
 #
@@ -270,7 +263,7 @@ end
 #     user: User.all.sample,
 #     image_url: urls[count]
 #   )
-#   count +=1
+#   count += 1
 # end
 #
 
@@ -297,10 +290,10 @@ titles.each do |title|
     user: User.all.sample,
     image_url: urls[count]
   )
-  count +=1
+  count += 1
 end
 
-########Seed Reviews For Products####################################
+#######Seed Reviews For Products####################################
 
 Product.all.each do |product|
   rand(10).times do
