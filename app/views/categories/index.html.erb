@@ -3,7 +3,7 @@
   <% @categories.each do |category| %>
     <li>
       <%= link_to category_path(category) do %>
-        <img src="https://i.s-jcrew.com/is/image/jcrew/94058_KE3981_m?$pdp_fs418$">
+        <img src="<%= category.products.sample.image_url %>" >
         <center><%= category.name %></center>
       <% end %>
     </li>

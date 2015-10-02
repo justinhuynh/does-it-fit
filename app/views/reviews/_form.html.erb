@@ -4,11 +4,11 @@
   <%= f.label :body %>
   <%= f.text_field :body %>
   <label id="review_product_fit">
-    <center>Your Rating:
-    <span id="sliderOutput"></span></center>
+    Your Rating:
+    <span id="sliderOutput"></span>
   </label>
   <div class="row">
-    <div class="small-8 small-centered columns">
+    <div class="small-12 small-centered columns">
       <h6>
         <span class="left">runs small</span>
         <span class="right">runs large</span>
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="small-8 small-centered columns">
+    <div class="small-12 small-centered columns">
       <div class="range-slider" data-slider data-options="start: 0; end: 10; display_selector: #sliderOutput">
         <span class="range-slider-handle" role="slider" tabindex="0"></span>
         <span class="range-slider-active-segment"></span>
@@ -25,5 +25,5 @@
       </div>
     </div>
   </div>
-  <center><%= f.submit class: "button radius" %></center>
+  <center><%= f.submit class: "button expand radius" %></center>
 <% end %>

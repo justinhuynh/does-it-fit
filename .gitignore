@@ -16,3 +16,4 @@
 /coverage
 /*.png
 /public/uploads/tmp/
+/public/uploads/

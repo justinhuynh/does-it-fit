@@ -20,6 +20,11 @@
     padding: 0px;
  }
 
+.user-profile-photo {
+  max-width: 300px;
+  max-height: 300px;
+}
+
  .top-desc {
    border: 2px solid #666;
    padding: 10px;
@@ -60,11 +65,8 @@
 }
 
 .review {
-  padding: 20px;
-  margin-top: 10px;
   list-style: none;
-  border: 2px solid #BBB;
-  border-radius: 20px;
+  margin: 0px !important;
 }
 
 .review-form {
@@ -85,4 +87,13 @@
 .fancy_font{
 	font-size: 18pt;
   font-family: Brush Script MT;
+
+.product-header {
+  text-align: left;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.product-title {
+  margin: 18px;
 }
