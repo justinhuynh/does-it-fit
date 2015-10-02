@@ -15,6 +15,7 @@ feature 'deletes product', %{
   let!(:user_2) { FactoryGirl.create(:user) }
   let!(:product_1) { FactoryGirl.create(:product, user: user_1) }
   let!(:product_2) { FactoryGirl.create(:product, user: user_2) }
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario 'authenticated user deletes own product' do
     sign_in(user_1)

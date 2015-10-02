@@ -42,6 +42,7 @@ feature 'user updates a review', %{
   end
 
   context "user's email does not match the any review posters email, " do
+    let!(:review) { FactoryGirl.create(:review) }
     let!(:user_poster) { FactoryGirl.create(:user) }
     let!(:user_trying_to_edit) do
       FactoryGirl.create(:user, email: 'test@gmail.com')

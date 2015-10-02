@@ -10,7 +10,7 @@ feature 'user signs out', %Q{
   - [√] When I opt to sign out, I get a confirmation
         that my identity has been forgotten on the machine I'm using
 } do
-
+  let!(:review) { FactoryGirl.create(:review) }
   scenario 'authenticated user signs out' do
     user = FactoryGirl.create(:user)
 

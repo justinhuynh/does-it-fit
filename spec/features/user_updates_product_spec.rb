@@ -11,6 +11,7 @@ feature 'user updates a product', %{
   - [√] I must receive a success message and be brought to the updated
         product page on success
 } do
+  let!(:review) { FactoryGirl.create(:review) }
   let!(:user) { FactoryGirl.create(:user) }
   let!(:product) { FactoryGirl.create(:product, user: user) }
 

@@ -11,6 +11,7 @@ feature 'user registers', %Q{
   - [√] If I don't specify the required information,
         I am presented with an error message
 } do
+  let!(:review) { FactoryGirl.create(:review) }
 
   scenario 'provide valid registration information' do
     visit new_user_registration_path

@@ -14,6 +14,7 @@ feature 'user adds review of a product', %{
 } do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:product) { FactoryGirl.create(:product) }
+  let!(:review) { FactoryGirl.create(:review) }
 
   context "user is signed in" do
     before (:each) do

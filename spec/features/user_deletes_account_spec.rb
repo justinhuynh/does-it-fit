@@ -11,7 +11,7 @@ feature 'deletes account', %{
   - [X] My information must be deleted from the database
   - [X] I must be notified if my update was successful or unsuccessful.
 } do
-
+  let!(:review) { FactoryGirl.create(:review) }
   scenario 'Logged in user clicks delete account' do
     user = FactoryGirl.create(:user)
     visit new_user_session_path
