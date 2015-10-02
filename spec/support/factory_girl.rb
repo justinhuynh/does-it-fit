@@ -34,6 +34,12 @@ FactoryGirl.define do
     product
   end
 
+  factory :vote do
+    user
+    review
+    helpful true
+  end
+
   factory :product do
     sequence(:title) { |n| "#{n} Albert snow shoes" }
     brand

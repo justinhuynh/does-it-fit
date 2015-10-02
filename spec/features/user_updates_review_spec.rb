@@ -27,7 +27,7 @@ feature 'user updates a review', %{
       expect(page).to have_content('review updated successfully!')
     end
 
-    scenario 'user unsuccessfully adds a product' do
+    scenario 'user unsuccessfully updates review' do
       sign_in(user)
       visit product_path(product)
       first(:link, "Edit Review").click

@@ -20,6 +20,10 @@ class Review < ActiveRecord::Base
     votes.where(helpful: false).length
   end
 
+  def vote(user)
+    votes.where(user: user).first
+  end
+
   def update_product_average_fit
     product.update_average_fit
   end
