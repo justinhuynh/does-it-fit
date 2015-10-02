@@ -23,7 +23,8 @@ categories = [
   'Shorts', 'Swimwear'
 ]
 
-#'Dress Shirts', 'Shoes', 'Outerwear', 'Hats', 'Sweaters', 'Athletic Wear', 'Sporting Goods'
+#'Dress Shirts', 'Shoes', 'Outerwear', 'Hats',
+#'Sweaters', 'Athletic Wear', 'Sporting Goods'
 
 categories.each do |category|
   Category.create(name: category)
