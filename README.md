@@ -5,17 +5,20 @@
 ### Contributors
 
 * Sorachantha Chan
+* Justin Huynh
+* Steven Saurbier
+* Eric Zell
 
 ### Concept
 
-Ever wanted to learn to read and write in another language from one convenient source, in an effective design that won't leave you confused and wasting time?
+All too often, we order something from our favorite fashion outlets, only to find that a `Medium` in one brand feels a lot more like an `XXL` in another.
 
-_Read My Lingo!_ is a web application aimed at solving just that problem. By providing content for people of all ages that can easily be followed, _Read My Lingo!_ not only teaches you to read and write in another language, but does so in a way that leaves you wanting more!
+_Does It Fit_ is a website aimed at solving just that problem. By gathering reviews from millions of users on 233,621 products and 194 retailers (and counting!), _Does It Fit_ sheds some light on whether that funky tanktop you've been eyeing will fit you just right.
 
 ### Functionality Overview
 
-* Users will be completely guided through lessons with both audio and text
-* Foreign Characters and their sounds are played at set intervals to the user
-* A virtual whiteboard will be presented after each question for the user to practice writing a foreign character
+* Users can register and submit reviews and ratings on the fit of a particular product
+* Products can be accessed by brand or category
+* Other users can then vote on whether they find a review helpful or not helpful - telling other users which reviews are most informative
 
-![ER Diagram](http://imgur.com/umt72PY)
+![ER Diagram](http://i.imgur.com/UZbJrPY.png)
